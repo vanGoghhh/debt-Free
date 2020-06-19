@@ -15,6 +15,15 @@
 		3D2745672484A7D900CE8EE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2745652484A7D900CE8EE3 /* LaunchScreen.storyboard */; };
 		3D2745722484A7D900CE8EE3 /* debtFreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2745712484A7D900CE8EE3 /* debtFreeTests.swift */; };
 		3D27457D2484A7DA00CE8EE3 /* debtFreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27457C2484A7DA00CE8EE3 /* debtFreeUITests.swift */; };
+		3D27458D24874BBF00CE8EE3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27458C24874BBF00CE8EE3 /* Account.swift */; };
+		3D2745952487522400CE8EE3 /* AddAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2745942487522400CE8EE3 /* AddAccountTableViewController.swift */; };
+		3D27459724875DEA00CE8EE3 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27459624875DEA00CE8EE3 /* AccountTableViewCell.swift */; };
+		3D2745992487601D00CE8EE3 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2745982487601D00CE8EE3 /* AccountTableViewController.swift */; };
+		3D8A8B1C24971DAD00A70D54 /* AddDebtTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1B24971DAD00A70D54 /* AddDebtTableViewController.swift */; };
+		3D8A8B1E249721B500A70D54 /* Debt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1D249721B500A70D54 /* Debt.swift */; };
+		3D8A8B202497245900A70D54 /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */; };
+		3D8A8B2224972ED800A70D54 /* DebtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B2124972ED800A70D54 /* DebtTableViewCell.swift */; };
+		3D8A8B24249B504500A70D54 /* IndividualDebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B23249B504500A70D54 /* IndividualDebtViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +58,15 @@
 		3D2745782484A7DA00CE8EE3 /* debtFreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = debtFreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D27457C2484A7DA00CE8EE3 /* debtFreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debtFreeUITests.swift; sourceTree = "<group>"; };
 		3D27457E2484A7DA00CE8EE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D27458C24874BBF00CE8EE3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		3D2745942487522400CE8EE3 /* AddAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewController.swift; sourceTree = "<group>"; };
+		3D27459624875DEA00CE8EE3 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		3D2745982487601D00CE8EE3 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		3D8A8B1B24971DAD00A70D54 /* AddDebtTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDebtTableViewController.swift; sourceTree = "<group>"; };
+		3D8A8B1D249721B500A70D54 /* Debt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debt.swift; sourceTree = "<group>"; };
+		3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
+		3D8A8B2124972ED800A70D54 /* DebtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtTableViewCell.swift; sourceTree = "<group>"; };
+		3D8A8B23249B504500A70D54 /* IndividualDebtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDebtViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +121,15 @@
 				3D27455C2484A7D800CE8EE3 /* SceneDelegate.swift */,
 				3D27455E2484A7D800CE8EE3 /* ViewController.swift */,
 				3D2745602484A7D800CE8EE3 /* Main.storyboard */,
+				3D8A8B23249B504500A70D54 /* IndividualDebtViewController.swift */,
+				3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */,
+				3D8A8B1B24971DAD00A70D54 /* AddDebtTableViewController.swift */,
+				3D27459624875DEA00CE8EE3 /* AccountTableViewCell.swift */,
+				3D2745982487601D00CE8EE3 /* AccountTableViewController.swift */,
+				3D8A8B2124972ED800A70D54 /* DebtTableViewCell.swift */,
+				3D2745942487522400CE8EE3 /* AddAccountTableViewController.swift */,
+				3D27458C24874BBF00CE8EE3 /* Account.swift */,
+				3D8A8B1D249721B500A70D54 /* Debt.swift */,
 				3D2745632484A7D900CE8EE3 /* Assets.xcassets */,
 				3D2745652484A7D900CE8EE3 /* LaunchScreen.storyboard */,
 				3D2745682484A7D900CE8EE3 /* Info.plist */,
@@ -259,7 +286,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D8A8B1E249721B500A70D54 /* Debt.swift in Sources */,
+				3D8A8B202497245900A70D54 /* DebtsViewController.swift in Sources */,
+				3D8A8B2224972ED800A70D54 /* DebtTableViewCell.swift in Sources */,
+				3D27458D24874BBF00CE8EE3 /* Account.swift in Sources */,
 				3D27455F2484A7D800CE8EE3 /* ViewController.swift in Sources */,
+				3D2745992487601D00CE8EE3 /* AccountTableViewController.swift in Sources */,
+				3D2745952487522400CE8EE3 /* AddAccountTableViewController.swift in Sources */,
+				3D8A8B1C24971DAD00A70D54 /* AddDebtTableViewController.swift in Sources */,
+				3D8A8B24249B504500A70D54 /* IndividualDebtViewController.swift in Sources */,
+				3D27459724875DEA00CE8EE3 /* AccountTableViewCell.swift in Sources */,
 				3D27455B2484A7D800CE8EE3 /* AppDelegate.swift in Sources */,
 				3D27455D2484A7D800CE8EE3 /* SceneDelegate.swift in Sources */,
 			);
