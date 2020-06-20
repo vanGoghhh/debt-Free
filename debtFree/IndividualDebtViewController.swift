@@ -38,6 +38,11 @@ class IndividualDebtViewController: UIViewController {
             increaseDebtController.addTextField {
                 (textField) in textField.text = "$0.00"
              }
+            let confirm = UIAlertAction(title: "Confirm", style: .default)
+            let cancel = UIAlertAction(title: "cancel", style: .default)
+            increaseDebtController.addAction(confirm)
+            increaseDebtController.addAction(cancel)
+            self.present(increaseDebtController, animated: true, completion: nil)
 
         }
         let decreaseDebt = UIAlertAction(title: "Decrease Debt", style: .default)
