@@ -4,7 +4,7 @@
 //
 //  Created by Nigel Ng on 18/6/20.
 //  Copyright © 2020 Nigel Ng. All rights reserved.
-//
+// 
 
 import UIKit
 
@@ -38,7 +38,7 @@ class IndividualDebtViewController: UIViewController {
             increaseDebtController.addTextField {
                 (textField) in textField.text = "$0.00"
              }
-            let typeAmount = UIAlertAction(title: <#T##String?#>, style: <#T##UIAlertAction.Style#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>)
+
         }
         let decreaseDebt = UIAlertAction(title: "Decrease Debt", style: .default)
         let cancelAction =  UIAlertAction(title: "Cancel", style: .default)
