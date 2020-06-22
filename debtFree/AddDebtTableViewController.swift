@@ -41,6 +41,9 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         
         let tapGesture =  UITapGestureRecognizer(target: self, action: #selector(AddDebtTableViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
+        
+
+        setupAddTargetIsNotEmpty()
     }
     
     // Code for due date picker
@@ -58,7 +61,6 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
     
     
     @IBAction func textEditingChanged(_sender: UITextField) {
-        updateSaveButtonState()
     }
     
     func updateSaveButtonState() {
@@ -174,4 +176,29 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
     }
     */
 
+    func setupAddTargetIsNotEmpty() {
+        
+        saveButton.isEnabled = false
+        
+        money.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        debtorDebteeName.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        oweOrOwed.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .allEditingEvents)
+        dueDate.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .allEditingEvents)
+    }
+    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+        
+        guard
+            let name = debtorDebteeName.text, !name.isEmpty,
+            let cash = money.text,!cash.isEmpty,
+            let oweing = oweOrOwed.text,!oweing.isEmpty,
+            let day = dueDate.text,!day.isEmpty
+            
+            else {
+
+                self.saveButton.isEnabled = false
+                return
+            }
+            saveButton.isEnabled = true
+    }
+        
 }
