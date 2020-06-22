@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Q5-k0-Dkn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Q5-k0-Dkn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -700,25 +700,24 @@
                                 <rect key="frame" x="20" y="88" width="374" height="460"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbU-Lb-638">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="108"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="107"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceY-kM-xZF">
-                                        <rect key="frame" x="0.0" y="111" width="374" height="108.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6fH-nd-GUU">
+                                        <rect key="frame" x="0.0" y="110" width="374" height="112"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DueDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Url-Ko-G0h">
-                                        <rect key="frame" x="0.0" y="222.5" width="374" height="108"/>
+                                        <rect key="frame" x="0.0" y="225" width="374" height="107"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6E-OV-jnt">
-                                        <rect key="frame" x="0.0" y="333.5" width="374" height="126.5"/>
+                                        <rect key="frame" x="0.0" y="335" width="374" height="125"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -742,16 +741,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="f7K-EP-EE1">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="ZiD-VM-53X"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="1hd-G0-Egd"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="1hd-G0-Egd">
+                            <connections>
+                                <segue destination="J8J-UQ-PTg" kind="unwind" identifier="editingUnwind" unwindAction="unwindFromEditingWithSegue:" id="2KM-g2-P1I"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="duedate" destination="Url-Ko-G0h" id="Nt3-Wn-kti"/>
                         <outlet property="money" destination="hbU-Lb-638" id="u5L-U5-Hcu"/>
-                        <outlet property="name" destination="ceY-kM-xZF" id="WNd-SP-018"/>
+                        <outlet property="name" destination="6fH-nd-GUU" id="9nz-nP-Ljy"/>
                         <outlet property="notes" destination="d6E-OV-jnt" id="VBL-P0-Lqx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk1-V3-p2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="J8J-UQ-PTg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-41" y="3088"/>
         </scene>

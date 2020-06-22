@@ -1,4 +1,4 @@
-//
+
 //  AppDelegate.swift
 //  debtFree
 //
@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
 
@@ -36,20 +36,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func registerForPushNotifications() {
       UNUserNotificationCenter.current() // 1
-        .requestAuthorization(options: [.alert, .sound]) { // 2
+        .requestAuthorization(options: [.alert, .sound, .badge],
+        completionHandler: {// 2
           granted, error in
-          print("Permission granted: \(granted)") // 3
-      }
+          print("Permission granted: \(granted)")
+        })// 3
+      
     }
+
     
     func getNotificationSettings() {
       UNUserNotificationCenter.current().getNotificationSettings { settings in
-        print("Notification settings: \(settings)")
+        if settings.authorizationStatus != .authorized {
+            // notifications not allowed
+            self.registerForPushNotifications()
+        }
       }
     }
 
+    
+    func application(
+      _ application: UIApplication,
+      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+      let token = tokenParts.joined()
+      print("Device Token: \(token)")
+    }
+
+    func application(
+      _ application: UIApplication,
+      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      print("Failed to register: \(error)")
+    }
 
 
 
 }
+
 

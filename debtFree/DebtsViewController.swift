@@ -12,8 +12,10 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var iOwe: [Debt] = []
     var peopleOweMe: [Debt] = []
-    
+    var editedDebtIndex: Int?
+    var editedDebt: Debt?
     var currentTableView: Int!
+    var newDebtName: String!
     @IBOutlet var debtTableView: UITableView!
     @IBOutlet var totalMoneyLabel: UILabel!
     @IBOutlet var typeOfDebtsSegControl: UISegmentedControl!
@@ -51,7 +53,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         switch (typeOfDebtsSegControl.selectedSegmentIndex) {
         case 0:
             cell.debtorDebteeName!.text = iOwe[indexPath.row].debtorDebteeName
-            cell.amountOwed!.text = iOwe[indexPath.row].money
+            cell.amountOwed!.text = "$" + iOwe[indexPath.row].money
             cell.dueDate!.text = iOwe[indexPath.row].date
             break
         case 1:
@@ -68,24 +70,24 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         return cell
     }
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-                if (currentTableView == 0) {
-                    iOwe.remove(at: indexPath.row);
-                    debtTableView.reloadData()
-                    updateTotal()
-                } else {
-                    peopleOweMe.remove(at: indexPath.row);
-                    debtTableView.deleteRows(at: [indexPath ], with: .automatic)
-                    debtTableView.reloadData()
-                    updateTotal()
-                
-                }
-            }
-       }
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .delete
+//    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//           if editingStyle == .delete {
+//                if (currentTableView == 0) {
+//                    iOwe.remove(at: indexPath.row);
+//                    debtTableView.reloadData()
+//                    updateTotal()
+//                } else {
+//                    peopleOweMe.remove(at: indexPath.row);
+//                    debtTableView.deleteRows(at: [indexPath ], with: .automatic)
+//                    debtTableView.reloadData()
+//                    updateTotal()
+//
+//                }
+//            }
+//       }
     
     @IBAction func unwindToDebtTableView(segue: UIStoryboardSegue) {
         guard segue.identifier == "debtSaveUnwind",
@@ -94,12 +96,42 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let debt = sourceViewController.debt else { return}
         if debt.oweOrOwed == "Owe" {
             iOwe.append(debt)
+
+            //notification for oweing others
+            let content = UNMutableNotificationContent()
+            content.title = "Hey its time to pay that debt!"
+            content.body = "You owe \(debt.debtorDebteeName) a total of $\(debt.money)"
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+            let date = dateFormatter.date(from: debt.date)
+            let dateComponents = Calendar.current.dateComponents([.month, .day, .year], from: date!)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { (error) in print("error in notifications") }
+            
+            //reload view of debt table
             debtTableView.reloadData()
-        
+
         } else {
             peopleOweMe.append(debt)
-            debtTableView.reloadData()
+            
+            //notification for oweing others
+            let content = UNMutableNotificationContent()
+            content.title = "Hey its time to collect that debt!"
+            content.body = "\(debt.debtorDebteeName) owes you a total of $\(debt.money)"
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+            let date = dateFormatter.date(from: debt.date)
+            let dateComponents = Calendar.current.dateComponents([.month, .day, .year], from: date!)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { (error) in print("error in notifications") }
+            
+            debtTableView?.reloadData()
         }
+        //update total for insights section perhaps
         updateTotal()
     }
     
@@ -120,7 +152,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         for debt in debtOwedTo {
             moneyOwed += Int(debt.money)!
         }
-        totalMoneyLabel.text = "$" + String(oweMoney - moneyOwed)
+        totalMoneyLabel?.text = "$" + String(oweMoney - moneyOwed)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -134,10 +166,29 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if (currentTableView == 0) {
                 let indexPath = sender as! IndexPath
                 destination.debt = iOwe[indexPath.row]
+                destination.arrIndex =  indexPath.row
+                
             } else {
                 let indexPath = sender as! IndexPath
                 destination.debt = peopleOweMe[indexPath.row]
+                destination.arrIndex = indexPath.row
             }
+        }
+    }
+    
+    @IBAction func unwindFromEditing(segue: UIStoryboardSegue) {
+        guard segue.identifier == "editingUnwind",
+            let sourceViewController = segue.source as? IndividualDebtViewController,
+            var debt = sourceViewController.debt else {return}
+        if (debt.oweOrOwed == "Owe") {
+            debt.debtorDebteeName = self.newDebtName!
+            iOwe[editedDebtIndex!] = debt
+            //debtTableView.reloadData()
+            updateTotal()
+        } else {
+            peopleOweMe[editedDebtIndex!] = debt
+            //debtTableView?.reloadData()
+            updateTotal()
         }
     }
     

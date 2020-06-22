@@ -28,6 +28,8 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        money.keyboardType = .numberPad
+        
         let oweOrOwedPicker = UIPickerView()
         oweOrOwed.inputView = oweOrOwedPicker
         oweOrOwedPicker.delegate = self
