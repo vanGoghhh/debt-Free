@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>55336727170-ds2b43gonbk6fuejjieir3c49en8jeb5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.55336727170-ds2b43gonbk6fuejjieir3c49en8jeb5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC4bZDkdNk2BubbgMip5bJTzYadn0rdGEs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>55336727170</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.orbital.debtFree1</string>
+	<key>PROJECT_ID</key>
+	<string>debtfree-3d96c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>debtfree-3d96c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:55336727170:ios:1933bc672b671998db3a9b</string>
+	<key>DATABASE_URL</key>
+	<string>https://debtfree-3d96c.firebaseio.com</string>
+</dict>
+</plist>

@@ -4,7 +4,7 @@
 //
 //  Created by Nigel Ng on 15/6/20.
 //  Copyright © 2020 Nigel Ng. All rights reserved.
-//
+// oof
 
 import UIKit
 
@@ -16,6 +16,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var editedDebt: Debt?
     var currentTableView: Int!
     var newDebtName: String!
+    var newDueDate: String!
     @IBOutlet var debtTableView: UITableView!
     @IBOutlet var totalMoneyLabel: UILabel!
     @IBOutlet var typeOfDebtsSegControl: UISegmentedControl!
@@ -61,7 +62,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 break;
             } else {
             cell.debtorDebteeName!.text = peopleOweMe[indexPath.row].debtorDebteeName
-            cell.amountOwed!.text = peopleOweMe[indexPath.row].money
+            cell.amountOwed!.text = "$" + peopleOweMe[indexPath.row].money
             cell.dueDate!.text = peopleOweMe[indexPath.row].date
             }
         
@@ -70,24 +71,6 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         return cell
     }
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        return .delete
-//    }
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//           if editingStyle == .delete {
-//                if (currentTableView == 0) {
-//                    iOwe.remove(at: indexPath.row);
-//                    debtTableView.reloadData()
-//                    updateTotal()
-//                } else {
-//                    peopleOweMe.remove(at: indexPath.row);
-//                    debtTableView.deleteRows(at: [indexPath ], with: .automatic)
-//                    debtTableView.reloadData()
-//                    updateTotal()
-//
-//                }
-//            }
-//       }
     
     @IBAction func unwindToDebtTableView(segue: UIStoryboardSegue) {
         guard segue.identifier == "debtSaveUnwind",
@@ -111,7 +94,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
             UNUserNotificationCenter.current().add(request) { (error) in print("error in notifications") }
             
             //reload view of debt table
-            debtTableView.reloadData()
+            debtTableView?.reloadData()
 
         } else {
             peopleOweMe.append(debt)
@@ -177,29 +160,26 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func unwindFromEditing(segue: UIStoryboardSegue) {
-        guard segue.identifier == "editingUnwind",
-            let sourceViewController = segue.source as? IndividualDebtViewController,
-            var debt = sourceViewController.debt else {return}
-        if (debt.oweOrOwed == "Owe") {
-            debt.debtorDebteeName = self.newDebtName!
-            iOwe[editedDebtIndex!] = debt
-            //debtTableView.reloadData()
-            updateTotal()
-        } else {
-            peopleOweMe[editedDebtIndex!] = debt
-            //debtTableView?.reloadData()
-            updateTotal()
+        if (segue.identifier == "editingUnwind") {
+            if (self.editedDebt?.oweOrOwed == "Owe") {
+                iOwe[editedDebtIndex!] = editedDebt!
+                updateTotal()
+            } else {
+                peopleOweMe[editedDebtIndex!] = editedDebt!
+                updateTotal()
+            }
         }
-    }
+        if (segue.identifier == "removeDebt" || segue.identifier == "payOffDebt") {
+            guard let sourceViewController = segue.source as? IndividualDebtViewController,
+            var debt = sourceViewController.debt else {return}
+            if (debt.oweOrOwed == "Owe") {
+                iOwe.remove(at: editedDebtIndex!)
+                updateTotal()
+            } else {
+                peopleOweMe.remove(at: editedDebtIndex!)
+                updateTotal()
+            }
+        }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }

@@ -54,7 +54,7 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
     @objc func dateChanged(dueDatePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/yy"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         dueDate.text = dateFormatter.string(from: dueDatePicker.date)
         view.endEditing(true)
     }

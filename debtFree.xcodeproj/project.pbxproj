@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3D27455B2484A7D800CE8EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455A2484A7D800CE8EE3 /* AppDelegate.swift */; };
 		3D27455D2484A7D800CE8EE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455C2484A7D800CE8EE3 /* SceneDelegate.swift */; };
-		3D27455F2484A7D800CE8EE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455E2484A7D800CE8EE3 /* ViewController.swift */; };
+		3D27455F2484A7D800CE8EE3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455E2484A7D800CE8EE3 /* WelcomeViewController.swift */; };
 		3D2745622484A7D800CE8EE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2745602484A7D800CE8EE3 /* Main.storyboard */; };
 		3D2745642484A7D900CE8EE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D2745632484A7D900CE8EE3 /* Assets.xcassets */; };
 		3D2745672484A7D900CE8EE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2745652484A7D900CE8EE3 /* LaunchScreen.storyboard */; };
@@ -24,6 +24,19 @@
 		3D8A8B202497245900A70D54 /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */; };
 		3D8A8B2224972ED800A70D54 /* DebtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B2124972ED800A70D54 /* DebtTableViewCell.swift */; };
 		3D8A8B24249B504500A70D54 /* IndividualDebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B23249B504500A70D54 /* IndividualDebtViewController.swift */; };
+		6E70E9FA8D2E9EFF07598A71 /* Pods_debtFreeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D87B4F9B58738FDB6153C9 /* Pods_debtFreeTests.framework */; };
+		710433C224A0906A00F93B67 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710433C124A0906A00F93B67 /* SettingsViewController.swift */; };
+		716A16C124A364E6002656CC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A16C024A364E6002656CC /* SignUpViewController.swift */; };
+		716A16C524A37050002656CC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A16C424A37050002656CC /* Utilities.swift */; };
+		716A16C724A38864002656CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A16C624A38864002656CC /* Constants.swift */; };
+		716A16C924A38C89002656CC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A16C824A38C89002656CC /* HomeViewController.swift */; };
+		716A16CB24A3918F002656CC /* HomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A16CA24A3918F002656CC /* HomeViewController2.swift */; };
+		71930D6924A48B2900B5BEE0 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71930D6824A48B2900B5BEE0 /* CalenderViewController.swift */; };
+		71D0DF4A24A1B64A00D47B2C /* TOPasscodeViewController-master in Resources */ = {isa = PBXBuildFile; fileRef = 71D0DF4924A1B64A00D47B2C /* TOPasscodeViewController-master */; };
+		71D8E1C124A1E69D00D64BCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71D8E1C024A1E69D00D64BCC /* GoogleService-Info.plist */; };
+		71D8E1C324A1ED0100D64BCC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8E1C224A1ED0100D64BCC /* LoginViewController.swift */; };
+		A88B3E05601AD8F2AAC1030F /* Pods_debtFree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7EF5DCEA837DA47CD532B /* Pods_debtFree.framework */; };
+		FA28616A671FAAC2479CB41D /* Pods_debtFree_debtFreeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF644FBE45EC0603DA4DDE29 /* Pods_debtFree_debtFreeUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +57,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B5D0B4676CC19525BB87655 /* Pods-debtFreeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debtFreeTests.release.xcconfig"; path = "Target Support Files/Pods-debtFreeTests/Pods-debtFreeTests.release.xcconfig"; sourceTree = "<group>"; };
+		2D1A6DBEA13B6D062A7C67E2 /* Pods-debtFree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debtFree.release.xcconfig"; path = "Target Support Files/Pods-debtFree/Pods-debtFree.release.xcconfig"; sourceTree = "<group>"; };
 		3D2745572484A7D800CE8EE3 /* debtFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debtFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D27455A2484A7D800CE8EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D27455C2484A7D800CE8EE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3D27455E2484A7D800CE8EE3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3D27455E2484A7D800CE8EE3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		3D2745612484A7D800CE8EE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D2745632484A7D900CE8EE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D2745662484A7D900CE8EE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,6 +82,24 @@
 		3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
 		3D8A8B2124972ED800A70D54 /* DebtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtTableViewCell.swift; sourceTree = "<group>"; };
 		3D8A8B23249B504500A70D54 /* IndividualDebtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDebtViewController.swift; sourceTree = "<group>"; };
+		6DDC988DE835F716A7B4739F /* Pods-debtFree-debtFreeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debtFree-debtFreeUITests.release.xcconfig"; path = "Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		710433C124A0906A00F93B67 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		716A16C024A364E6002656CC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		716A16C424A37050002656CC /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		716A16C624A38864002656CC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		716A16C824A38C89002656CC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		716A16CA24A3918F002656CC /* HomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController2.swift; sourceTree = "<group>"; };
+		71930D6824A48B2900B5BEE0 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		71D0DF4924A1B64A00D47B2C /* TOPasscodeViewController-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "TOPasscodeViewController-master"; path = "../TOPasscodeViewController-master"; sourceTree = "<group>"; };
+		71D8E1BD24A1D4D600D64BCC /* debtFree-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "debtFree-Bridging-Header.h"; sourceTree = "<group>"; };
+		71D8E1C024A1E69D00D64BCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		71D8E1C224A1ED0100D64BCC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		82E7EF5DCEA837DA47CD532B /* Pods_debtFree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_debtFree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0604D8E467835563DA9FD68 /* Pods-debtFree-debtFreeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debtFree-debtFreeUITests.debug.xcconfig"; path = "Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BF332B707E0852A38945D976 /* Pods-debtFree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debtFree.debug.xcconfig"; path = "Target Support Files/Pods-debtFree/Pods-debtFree.debug.xcconfig"; sourceTree = "<group>"; };
+		D1D87B4F9B58738FDB6153C9 /* Pods_debtFreeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_debtFreeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF644FBE45EC0603DA4DDE29 /* Pods_debtFree_debtFreeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_debtFree_debtFreeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6E02E6CEC0761F5B6F131C6 /* Pods-debtFreeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debtFreeTests.debug.xcconfig"; path = "Target Support Files/Pods-debtFreeTests/Pods-debtFreeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88B3E05601AD8F2AAC1030F /* Pods_debtFree.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E70E9FA8D2E9EFF07598A71 /* Pods_debtFreeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,12 +123,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA28616A671FAAC2479CB41D /* Pods_debtFree_debtFreeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B97277DA7EF3D3B0E38648C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF332B707E0852A38945D976 /* Pods-debtFree.debug.xcconfig */,
+				2D1A6DBEA13B6D062A7C67E2 /* Pods-debtFree.release.xcconfig */,
+				A0604D8E467835563DA9FD68 /* Pods-debtFree-debtFreeUITests.debug.xcconfig */,
+				6DDC988DE835F716A7B4739F /* Pods-debtFree-debtFreeUITests.release.xcconfig */,
+				F6E02E6CEC0761F5B6F131C6 /* Pods-debtFreeTests.debug.xcconfig */,
+				1B5D0B4676CC19525BB87655 /* Pods-debtFreeTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3D27454E2484A7D800CE8EE3 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +150,9 @@
 				3D2745702484A7D900CE8EE3 /* debtFreeTests */,
 				3D27457B2484A7DA00CE8EE3 /* debtFreeUITests */,
 				3D2745582484A7D800CE8EE3 /* Products */,
+				71D0DF4924A1B64A00D47B2C /* TOPasscodeViewController-master */,
+				1B97277DA7EF3D3B0E38648C /* Pods */,
+				CBD3CD7DE6A4B4236F22E1AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,8 +171,16 @@
 			children = (
 				3D27455A2484A7D800CE8EE3 /* AppDelegate.swift */,
 				3D27455C2484A7D800CE8EE3 /* SceneDelegate.swift */,
-				3D27455E2484A7D800CE8EE3 /* ViewController.swift */,
+				716A16C024A364E6002656CC /* SignUpViewController.swift */,
+				71D8E1C224A1ED0100D64BCC /* LoginViewController.swift */,
+				716A16C424A37050002656CC /* Utilities.swift */,
 				3D2745602484A7D800CE8EE3 /* Main.storyboard */,
+				716A16CA24A3918F002656CC /* HomeViewController2.swift */,
+				716A16C824A38C89002656CC /* HomeViewController.swift */,
+				716A16C624A38864002656CC /* Constants.swift */,
+				3D27455E2484A7D800CE8EE3 /* WelcomeViewController.swift */,
+				71D8E1C024A1E69D00D64BCC /* GoogleService-Info.plist */,
+				710433C124A0906A00F93B67 /* SettingsViewController.swift */,
 				3D8A8B23249B504500A70D54 /* IndividualDebtViewController.swift */,
 				3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */,
 				3D8A8B1B24971DAD00A70D54 /* AddDebtTableViewController.swift */,
@@ -133,6 +193,8 @@
 				3D2745632484A7D900CE8EE3 /* Assets.xcassets */,
 				3D2745652484A7D900CE8EE3 /* LaunchScreen.storyboard */,
 				3D2745682484A7D900CE8EE3 /* Info.plist */,
+				71D8E1BD24A1D4D600D64BCC /* debtFree-Bridging-Header.h */,
+				71930D6824A48B2900B5BEE0 /* CalenderViewController.swift */,
 			);
 			path = debtFree;
 			sourceTree = "<group>";
@@ -155,6 +217,16 @@
 			path = debtFreeUITests;
 			sourceTree = "<group>";
 		};
+		CBD3CD7DE6A4B4236F22E1AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82E7EF5DCEA837DA47CD532B /* Pods_debtFree.framework */,
+				DF644FBE45EC0603DA4DDE29 /* Pods_debtFree_debtFreeUITests.framework */,
+				D1D87B4F9B58738FDB6153C9 /* Pods_debtFreeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,9 +234,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D2745812484A7DA00CE8EE3 /* Build configuration list for PBXNativeTarget "debtFree" */;
 			buildPhases = (
+				90EDDACA1987F6E357114524 /* [CP] Check Pods Manifest.lock */,
 				3D2745532484A7D800CE8EE3 /* Sources */,
 				3D2745542484A7D800CE8EE3 /* Frameworks */,
 				3D2745552484A7D800CE8EE3 /* Resources */,
+				C67764658A9F7291154198B3 /* [CP] Embed Pods Frameworks */,
+				FF02F544D4694E34C12F905D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,6 +254,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D2745842484A7DA00CE8EE3 /* Build configuration list for PBXNativeTarget "debtFreeTests" */;
 			buildPhases = (
+				2B13C58C09F5C932E07B48D8 /* [CP] Check Pods Manifest.lock */,
 				3D2745692484A7D900CE8EE3 /* Sources */,
 				3D27456A2484A7D900CE8EE3 /* Frameworks */,
 				3D27456B2484A7D900CE8EE3 /* Resources */,
@@ -197,9 +273,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D2745872484A7DA00CE8EE3 /* Build configuration list for PBXNativeTarget "debtFreeUITests" */;
 			buildPhases = (
+				D849F099EBDA078856617779 /* [CP] Check Pods Manifest.lock */,
 				3D2745742484A7DA00CE8EE3 /* Sources */,
 				3D2745752484A7DA00CE8EE3 /* Frameworks */,
 				3D2745762484A7DA00CE8EE3 /* Resources */,
+				B22A6D020F49958DAFC49094 /* [CP] Embed Pods Frameworks */,
+				875E83B08517FC743EAE6830 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,6 +302,7 @@
 				TargetAttributes = {
 					3D2745562484A7D800CE8EE3 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1140;
 					};
 					3D27456C2484A7D900CE8EE3 = {
 						CreatedOnToolsVersion = 11.5;
@@ -259,9 +339,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71D0DF4A24A1B64A00D47B2C /* TOPasscodeViewController-master in Resources */,
 				3D2745672484A7D900CE8EE3 /* LaunchScreen.storyboard in Resources */,
 				3D2745642484A7D900CE8EE3 /* Assets.xcassets in Resources */,
 				3D2745622484A7D800CE8EE3 /* Main.storyboard in Resources */,
+				71D8E1C124A1E69D00D64BCC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,23 +363,168 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2B13C58C09F5C932E07B48D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-debtFreeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		875E83B08517FC743EAE6830 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90EDDACA1987F6E357114524 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-debtFree-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B22A6D020F49958DAFC49094 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C67764658A9F7291154198B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-debtFree/Pods-debtFree-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-debtFree/Pods-debtFree-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-debtFree/Pods-debtFree-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D849F099EBDA078856617779 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-debtFree-debtFreeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF02F544D4694E34C12F905D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-debtFree/Pods-debtFree-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-debtFree/Pods-debtFree-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-debtFree/Pods-debtFree-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3D2745532484A7D800CE8EE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71930D6924A48B2900B5BEE0 /* CalenderViewController.swift in Sources */,
 				3D8A8B1E249721B500A70D54 /* Debt.swift in Sources */,
 				3D8A8B202497245900A70D54 /* DebtsViewController.swift in Sources */,
+				716A16C924A38C89002656CC /* HomeViewController.swift in Sources */,
 				3D8A8B2224972ED800A70D54 /* DebtTableViewCell.swift in Sources */,
+				71D8E1C324A1ED0100D64BCC /* LoginViewController.swift in Sources */,
 				3D27458D24874BBF00CE8EE3 /* Account.swift in Sources */,
-				3D27455F2484A7D800CE8EE3 /* ViewController.swift in Sources */,
+				716A16CB24A3918F002656CC /* HomeViewController2.swift in Sources */,
+				3D27455F2484A7D800CE8EE3 /* WelcomeViewController.swift in Sources */,
 				3D2745992487601D00CE8EE3 /* AccountTableViewController.swift in Sources */,
 				3D2745952487522400CE8EE3 /* AddAccountTableViewController.swift in Sources */,
 				3D8A8B1C24971DAD00A70D54 /* AddDebtTableViewController.swift in Sources */,
 				3D8A8B24249B504500A70D54 /* IndividualDebtViewController.swift in Sources */,
+				716A16C524A37050002656CC /* Utilities.swift in Sources */,
+				716A16C124A364E6002656CC /* SignUpViewController.swift in Sources */,
 				3D27459724875DEA00CE8EE3 /* AccountTableViewCell.swift in Sources */,
+				710433C224A0906A00F93B67 /* SettingsViewController.swift in Sources */,
 				3D27455B2484A7D800CE8EE3 /* AppDelegate.swift in Sources */,
 				3D27455D2484A7D800CE8EE3 /* SceneDelegate.swift in Sources */,
+				716A16C724A38864002656CC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,17 +697,22 @@
 		};
 		3D2745822484A7DA00CE8EE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF332B707E0852A38945D976 /* Pods-debtFree.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDD8Z3Y773;
 				INFOPLIST_FILE = debtFree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.orbital.debtFree1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "debtFree/debtFree-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -488,17 +720,21 @@
 		};
 		3D2745832484A7DA00CE8EE3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D1A6DBEA13B6D062A7C67E2 /* Pods-debtFree.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDD8Z3Y773;
 				INFOPLIST_FILE = debtFree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.orbital.debtFree1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "debtFree/debtFree-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -506,6 +742,7 @@
 		};
 		3D2745852484A7DA00CE8EE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6E02E6CEC0761F5B6F131C6 /* Pods-debtFreeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -529,6 +766,7 @@
 		};
 		3D2745862484A7DA00CE8EE3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B5D0B4676CC19525BB87655 /* Pods-debtFreeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -552,6 +790,7 @@
 		};
 		3D2745882484A7DA00CE8EE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0604D8E467835563DA9FD68 /* Pods-debtFree-debtFreeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -571,6 +810,7 @@
 		};
 		3D2745892484A7DA00CE8EE3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DDC988DE835F716A7B4739F /* Pods-debtFree-debtFreeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
