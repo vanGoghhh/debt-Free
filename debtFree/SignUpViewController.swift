@@ -97,14 +97,19 @@ class SignUpViewController: UIViewController {
                 } else {
                     
                     //User was created successfully, store first & last name
+                   
+                    
                     let db = Firestore.firestore()
-                    db.collection("users").addDocument(data: ["firstname": firstName, "lastname": lastName, "uid": result!.user.uid]) { (error) in
-                        if error != nil {
-                            
-                            //show error message
-                            self.showError("First and/or Last name couldn't be saved")
-                        }
-                    }
+                    db.collection("users").document(email).setData(["firstname": firstName, "lastname": lastName, "uid": result!.user.uid])
+
+                    
+//                    db.collection("users").addDocument(data: ["firstname": firstName, "lastname": lastName, "uid": result!.user.uid]) { (error) in
+//                        if error != nil {
+//
+//                            //show error message
+//                            self.showError("First and/or Last name couldn't be saved")
+//                        }
+//                    }
                     
                     //Transition to home screen
                     self.transitionToHome()

@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/nigelng/Desktop/Orbital2020/debt-Free2/debtFree/DebtsDataBase.swift">
-   </FileRef>
-   <FileRef
       location = "group:debtFree.xcodeproj">
    </FileRef>
    <FileRef

@@ -55,6 +55,10 @@ class LoginViewController: UIViewController {
                 self.errorLabel.text = error!.localizedDescription
                 self.errorLabel.alpha = 1
             } else {
+                //Get document ID of the user
+
+                
+                
                 //Transition to home screen
                 
                 let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController

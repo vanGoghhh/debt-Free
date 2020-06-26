@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D17330124A4CA0D0016FDE6 /* DebtsInsightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17330024A4CA0D0016FDE6 /* DebtsInsightViewController.swift */; };
 		3D17330324A4D1430016FDE6 /* NSUIColour+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17330224A4D1430016FDE6 /* NSUIColour+Hex.swift */; };
-		3D17330724A4DA430016FDE6 /* DebtsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17330624A4DA430016FDE6 /* DebtsDataBase.swift */; };
 		3D17330924A4DEAD0016FDE6 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17330824A4DEAD0016FDE6 /* AppTabBarController.swift */; };
 		3D27455B2484A7D800CE8EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455A2484A7D800CE8EE3 /* AppDelegate.swift */; };
 		3D27455D2484A7D800CE8EE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455C2484A7D800CE8EE3 /* SceneDelegate.swift */; };
@@ -30,6 +29,7 @@
 		3D8A8B24249B504500A70D54 /* IndividualDebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B23249B504500A70D54 /* IndividualDebtViewController.swift */; };
 		6E70E9FA8D2E9EFF07598A71 /* Pods_debtFreeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D87B4F9B58738FDB6153C9 /* Pods_debtFreeTests.framework */; };
 		710433C224A0906A00F93B67 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710433C124A0906A00F93B67 /* SettingsViewController.swift */; };
+		7153842824A5B0690064AE92 /* DebtsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7153842724A5B0690064AE92 /* DebtsDataBase.swift */; };
 		716A16C124A364E6002656CC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A16C024A364E6002656CC /* SignUpViewController.swift */; };
 		716A16C524A37050002656CC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A16C424A37050002656CC /* Utilities.swift */; };
 		716A16C724A38864002656CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A16C624A38864002656CC /* Constants.swift */; };
@@ -64,7 +64,6 @@
 		2D1A6DBEA13B6D062A7C67E2 /* Pods-debtFree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debtFree.release.xcconfig"; path = "Target Support Files/Pods-debtFree/Pods-debtFree.release.xcconfig"; sourceTree = "<group>"; };
 		3D17330024A4CA0D0016FDE6 /* DebtsInsightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsInsightViewController.swift; sourceTree = "<group>"; };
 		3D17330224A4D1430016FDE6 /* NSUIColour+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIColour+Hex.swift"; sourceTree = "<group>"; };
-		3D17330624A4DA430016FDE6 /* DebtsDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebtsDataBase.swift; path = "/Users/nigelng/Desktop/Orbital2020/debt-Free2/debtFree/DebtsDataBase.swift"; sourceTree = "<absolute>"; };
 		3D17330824A4DEAD0016FDE6 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		3D2745572484A7D800CE8EE3 /* debtFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debtFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D27455A2484A7D800CE8EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		3D8A8B23249B504500A70D54 /* IndividualDebtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDebtViewController.swift; sourceTree = "<group>"; };
 		6DDC988DE835F716A7B4739F /* Pods-debtFree-debtFreeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debtFree-debtFreeUITests.release.xcconfig"; path = "Target Support Files/Pods-debtFree-debtFreeUITests/Pods-debtFree-debtFreeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		710433C124A0906A00F93B67 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7153842724A5B0690064AE92 /* DebtsDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebtsDataBase.swift; sourceTree = "<group>"; };
 		716A16C024A364E6002656CC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		716A16C424A37050002656CC /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		716A16C624A38864002656CC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -179,8 +179,8 @@
 				716A16C024A364E6002656CC /* SignUpViewController.swift */,
 				71D8E1C224A1ED0100D64BCC /* LoginViewController.swift */,
 				716A16C424A37050002656CC /* Utilities.swift */,
-				3D17330624A4DA430016FDE6 /* DebtsDataBase.swift */,
 				3D2745602484A7D800CE8EE3 /* Main.storyboard */,
+				7153842724A5B0690064AE92 /* DebtsDataBase.swift */,
 				3D17330824A4DEAD0016FDE6 /* AppTabBarController.swift */,
 				3D17330024A4CA0D0016FDE6 /* DebtsInsightViewController.swift */,
 				3D17330224A4D1430016FDE6 /* NSUIColour+Hex.swift */,
@@ -516,7 +516,6 @@
 				3D17330324A4D1430016FDE6 /* NSUIColour+Hex.swift in Sources */,
 				71930D6924A48B2900B5BEE0 /* CalenderViewController.swift in Sources */,
 				3D8A8B1E249721B500A70D54 /* Debt.swift in Sources */,
-				3D17330724A4DA430016FDE6 /* DebtsDataBase.swift in Sources */,
 				3D8A8B202497245900A70D54 /* DebtsViewController.swift in Sources */,
 				716A16C924A38C89002656CC /* HomeViewController.swift in Sources */,
 				3D8A8B2224972ED800A70D54 /* DebtTableViewCell.swift in Sources */,
@@ -535,6 +534,7 @@
 				3D17330124A4CA0D0016FDE6 /* DebtsInsightViewController.swift in Sources */,
 				3D27455B2484A7D800CE8EE3 /* AppDelegate.swift in Sources */,
 				3D17330924A4DEAD0016FDE6 /* AppTabBarController.swift in Sources */,
+				7153842824A5B0690064AE92 /* DebtsDataBase.swift in Sources */,
 				3D27455D2484A7D800CE8EE3 /* SceneDelegate.swift in Sources */,
 				716A16C724A38864002656CC /* Constants.swift in Sources */,
 			);
