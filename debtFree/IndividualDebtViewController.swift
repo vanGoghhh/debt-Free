@@ -197,6 +197,7 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
             guard segue.source is CalenderViewController
                 else { return}
             self.duedate.text = self.newDate
+            self.debt?.date = self.newDate!
         }
     }
     

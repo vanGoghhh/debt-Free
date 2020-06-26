@@ -103,6 +103,13 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         let note = notes.text ?? ""
         let owe = oweOrOwed.text ?? ""
         debt = Debt(debtorDebteeName: name, money: mon, date: date, notes: note, oweOrOwed: owe)
+        if (debt!.oweOrOwed == "Owe") {
+            debtsData.addDebtOwe(debt: debt!)
+        } else {
+            debtsData.addDebtOwedTo(debt: debt!)
+        }
+        print(debtsData.debtsOwe)
+        print(debtsData.debtsOwedTo)
     }
     // End of code for transfering data to table
     

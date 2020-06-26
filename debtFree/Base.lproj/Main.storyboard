@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0SL-RI-0rr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0SL-RI-0rr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -319,7 +319,7 @@
         <scene sceneID="CWr-QO-oMG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wrW-ck-wbJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Debts" selectedImage="doc.text" catalog="system" id="ypu-Y1-qPX"/>
+                    <tabBarItem key="tabBarItem" title="Debts" image="doc.text" catalog="system" selectedImage="doc.text" id="ypu-Y1-qPX"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="eKe-cB-zol"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ecX-kw-HZF">
@@ -335,21 +335,45 @@
             </objects>
             <point key="canvasLocation" x="-514" y="944"/>
         </scene>
-        <!--View Controller-->
+        <!--Debts Insight View Controller-->
         <scene sceneID="hRO-xZ-Ftj">
             <objects>
-                <viewController id="eBc-EQ-MJ4" sceneMemberID="viewController">
+                <viewController id="eBc-EQ-MJ4" customClass="DebtsInsightViewController" customModule="debtFree" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RwX-1v-HLN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" Debt Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zs-bI-wql">
+                                <rect key="frame" x="0.0" y="73" width="414" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  Your Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFs-GP-TQV">
+                                <rect key="frame" x="0.0" y="141" width="404" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMY-Nt-TZX" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="269" width="414" height="331"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="lhO-ua-7qN"/>
                     </view>
                     <navigationItem key="navigationItem" id="ET9-xL-o3b"/>
+                    <connections>
+                        <outlet property="pieChart" destination="IMY-Nt-TZX" id="QNX-hE-UPT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THk-uI-fXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="1697"/>
+            <point key="canvasLocation" x="1114.4927536231885" y="1696.875"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="DgS-Nt-ok6">
@@ -483,7 +507,7 @@
         <scene sceneID="7Cb-O4-yjq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LOv-kD-q7s" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" selectedImage="creditcard" catalog="system" id="En6-FK-sID"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="creditcard" catalog="system" selectedImage="creditcard" id="En6-FK-sID"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="g3P-K9-5mg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I2h-pa-IgK">
@@ -1098,7 +1122,7 @@
         <scene sceneID="oUC-ri-d8S">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfx-Ft-TDD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="plus" catalog="system" id="mFm-2u-jIc"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="plus" catalog="system" selectedImage="plus" id="mFm-2u-jIc"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vlE-bH-9Hw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wGi-pb-S3W">
@@ -1168,10 +1192,10 @@
             </objects>
             <point key="canvasLocation" x="-312" y="-911"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--App Tab Bar Controller-->
         <scene sceneID="v5w-bn-I7j">
             <objects>
-                <tabBarController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="qyY-pu-6dB" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="qyY-pu-6dB" customClass="AppTabBarController" customModule="debtFree" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jLe-Cm-7rD">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

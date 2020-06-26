@@ -26,12 +26,12 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         currentTableView = 0;
         updateTotal()
-        debtTableView.delegate = self
-        debtTableView.dataSource = self
-        self.debtTableView.separatorStyle = .none
-        self.debtTableView.estimatedRowHeight = 600
-        self.debtTableView.rowHeight =  UITableView.automaticDimension
-        self.debtTableView.allowsSelection = true
+        debtTableView?.delegate = self
+        debtTableView?.dataSource = self
+        self.debtTableView?.separatorStyle = .none
+        self.debtTableView?.estimatedRowHeight = 600
+        self.debtTableView?.rowHeight =  UITableView.automaticDimension
+        self.debtTableView?.allowsSelection = true
      //   self.debtTableView.rowHeight = UITableViewAutomatic
         // Do any additional setup after loading the view.
     }
@@ -79,7 +79,8 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let debt = sourceViewController.debt else { return}
         if debt.oweOrOwed == "Owe" {
             iOwe.append(debt)
-
+            //debtsData.addDebtOwe(debt: debt)
+            //print(debtsData.debtsOwedTo)
             //notification for oweing others
             let content = UNMutableNotificationContent()
             content.title = "Hey its time to pay that debt!"
@@ -98,8 +99,9 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         } else {
             peopleOweMe.append(debt)
-            
+            //debtsData.addDebtOwedTo(debt: debt)
             //notification for oweing others
+            //print(debtsData.debtsOwe)
             let content = UNMutableNotificationContent()
             content.title = "Hey its time to collect that debt!"
             content.body = "\(debt.debtorDebteeName) owes you a total of $\(debt.money)"
