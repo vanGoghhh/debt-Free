@@ -9,7 +9,7 @@
 
 import UIKit
 
-class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     @IBOutlet var money: UITextField!
     @IBOutlet var notes: UITextField!
@@ -19,6 +19,7 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
     @IBOutlet var dueDate: UITextField!
     
     var debt: Debt?
+    var newDueDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,7 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         oweOrOwed.inputView = oweOrOwedPicker
         oweOrOwedPicker.delegate = self
         
-        let dueDatePicker = UIDatePicker()
-        dueDatePicker.datePickerMode = .date
-        dueDatePicker.addTarget(self, action: #selector(AddDebtTableViewController.dateChanged(dueDatePicker:)), for: .valueChanged)
-        dueDate.inputView = dueDatePicker
+        dueDate.delegate = self
         
         let tapGesture =  UITapGestureRecognizer(target: self, action: #selector(AddDebtTableViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
@@ -51,12 +49,12 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         view.endEditing(true)
     }
     
-    @objc func dateChanged(dueDatePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MMM d, yyyy"
-        dueDate.text = dateFormatter.string(from: dueDatePicker.date)
-        view.endEditing(true)
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (textField == dueDate) {
+            performSegue(withIdentifier: "addDueDate", sender: self)
+            self.dueDate.text = self.newDueDate
+            view.endEditing(true)
+        }
     }
     
     
@@ -94,9 +92,8 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
     
     // Code for transfering data to debts table
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "debtSaveUnwind") {
         super.prepare(for: segue, sender: sender)
-        guard segue.identifier == "debtSaveUnwind" else { return}
-        
         let name = debtorDebteeName.text ?? ""
         let mon =  money.text ?? ""
         let date = dueDate.text ?? ""
@@ -108,80 +105,21 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         } else {
             debtsData.addDebtOwedTo(debt: debt!)
         }
-        print(debtsData.debtsOwe)
-        print(debtsData.debtsOwedTo)
+        }
+        if (segue.identifier == "addDueDate") {
+            if let dest = segue.destination as? AddDueDateViewController {
+            let date = Date()
+            let formatter = DateFormatter()
+                formatter.dateFormat = "MMM d, yyyy"
+            let dateInString = formatter.string(from: date)
+            dest.ogDate = dateInString
+            }
+        }
     }
     // End of code for transfering data to table
     
     
     
-    // MARK: - Table view data source
-    
-   
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     func setupAddTargetIsNotEmpty() {
         
@@ -206,6 +144,16 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
                 return
             }
             saveButton.isEnabled = true
+    }
+    
+    @IBAction func unwindFromAddingNewDueDate(segue: UIStoryboardSegue) {
+        if segue.identifier == "addDueDate" {
+            guard segue.source is AddDueDateViewController
+                else {
+                    return
+                }
+            self.dueDate.text = self.newDueDate!
+        }
     }
         
 }
