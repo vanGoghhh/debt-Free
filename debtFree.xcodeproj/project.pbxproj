@@ -10,7 +10,6 @@
 		3D17330124A4CA0D0016FDE6 /* DebtsInsightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17330024A4CA0D0016FDE6 /* DebtsInsightViewController.swift */; };
 		3D17330324A4D1430016FDE6 /* NSUIColour+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17330224A4D1430016FDE6 /* NSUIColour+Hex.swift */; };
 		3D17330924A4DEAD0016FDE6 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17330824A4DEAD0016FDE6 /* AppTabBarController.swift */; };
-		3D17330D24A60DB20016FDE6 /* AddDueDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17330C24A60DB20016FDE6 /* AddDueDateViewController.swift */; };
 		3D27455B2484A7D800CE8EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455A2484A7D800CE8EE3 /* AppDelegate.swift */; };
 		3D27455D2484A7D800CE8EE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455C2484A7D800CE8EE3 /* SceneDelegate.swift */; };
 		3D27455F2484A7D800CE8EE3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27455E2484A7D800CE8EE3 /* WelcomeViewController.swift */; };
@@ -23,6 +22,7 @@
 		3D2745952487522400CE8EE3 /* AddAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2745942487522400CE8EE3 /* AddAccountTableViewController.swift */; };
 		3D27459724875DEA00CE8EE3 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27459624875DEA00CE8EE3 /* AccountTableViewCell.swift */; };
 		3D2745992487601D00CE8EE3 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2745982487601D00CE8EE3 /* AccountTableViewController.swift */; };
+		3D620F2524A83B2D00FD08B7 /* AddDueDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D620F2424A83B2C00FD08B7 /* AddDueDateViewController.swift */; };
 		3D8A8B1C24971DAD00A70D54 /* AddDebtTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1B24971DAD00A70D54 /* AddDebtTableViewController.swift */; };
 		3D8A8B1E249721B500A70D54 /* Debt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1D249721B500A70D54 /* Debt.swift */; };
 		3D8A8B202497245900A70D54 /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */; };
@@ -66,7 +66,6 @@
 		3D17330024A4CA0D0016FDE6 /* DebtsInsightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsInsightViewController.swift; sourceTree = "<group>"; };
 		3D17330224A4D1430016FDE6 /* NSUIColour+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIColour+Hex.swift"; sourceTree = "<group>"; };
 		3D17330824A4DEAD0016FDE6 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
-		3D17330C24A60DB20016FDE6 /* AddDueDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddDueDateViewController.swift; path = ../../../AddDueDateViewController.swift; sourceTree = "<group>"; };
 		3D2745572484A7D800CE8EE3 /* debtFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debtFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D27455A2484A7D800CE8EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D27455C2484A7D800CE8EE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		3D2745942487522400CE8EE3 /* AddAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewController.swift; sourceTree = "<group>"; };
 		3D27459624875DEA00CE8EE3 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		3D2745982487601D00CE8EE3 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		3D620F2424A83B2C00FD08B7 /* AddDueDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDueDateViewController.swift; sourceTree = "<group>"; };
 		3D8A8B1B24971DAD00A70D54 /* AddDebtTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDebtTableViewController.swift; sourceTree = "<group>"; };
 		3D8A8B1D249721B500A70D54 /* Debt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debt.swift; sourceTree = "<group>"; };
 		3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 				716A16C424A37050002656CC /* Utilities.swift */,
 				3D2745602484A7D800CE8EE3 /* Main.storyboard */,
 				7153842724A5B0690064AE92 /* DebtsDataBase.swift */,
-				3D17330C24A60DB20016FDE6 /* AddDueDateViewController.swift */,
 				3D17330824A4DEAD0016FDE6 /* AppTabBarController.swift */,
+				3D620F2424A83B2C00FD08B7 /* AddDueDateViewController.swift */,
 				3D17330024A4CA0D0016FDE6 /* DebtsInsightViewController.swift */,
 				3D17330224A4D1430016FDE6 /* NSUIColour+Hex.swift */,
 				716A16CA24A3918F002656CC /* HomeViewController2.swift */,
@@ -523,10 +523,10 @@
 				716A16C924A38C89002656CC /* HomeViewController.swift in Sources */,
 				3D8A8B2224972ED800A70D54 /* DebtTableViewCell.swift in Sources */,
 				71D8E1C324A1ED0100D64BCC /* LoginViewController.swift in Sources */,
+				3D620F2524A83B2D00FD08B7 /* AddDueDateViewController.swift in Sources */,
 				3D27458D24874BBF00CE8EE3 /* Account.swift in Sources */,
 				716A16CB24A3918F002656CC /* HomeViewController2.swift in Sources */,
 				3D27455F2484A7D800CE8EE3 /* WelcomeViewController.swift in Sources */,
-				3D17330D24A60DB20016FDE6 /* AddDueDateViewController.swift in Sources */,
 				3D2745992487601D00CE8EE3 /* AccountTableViewController.swift in Sources */,
 				3D2745952487522400CE8EE3 /* AddAccountTableViewController.swift in Sources */,
 				3D8A8B1C24971DAD00A70D54 /* AddDebtTableViewController.swift in Sources */,

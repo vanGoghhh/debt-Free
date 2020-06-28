@@ -971,6 +971,7 @@
                         <outlet property="oweOrOwed" destination="POd-oc-VFq" id="cbq-Ph-dYp"/>
                         <outlet property="saveButton" destination="8gJ-fe-U86" id="Hp2-fQ-eJM"/>
                         <segue destination="qwf-ve-z4Y" kind="show" identifier="addDueDate" id="Um8-NJ-n9v"/>
+                        <segue destination="qyY-pu-6dB" kind="show" identifier="cancelAddDebt" id="WPn-AK-wwk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mX-21-WBQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1171,7 +1172,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTr-Ts-KZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="974"/>
+            <point key="canvasLocation" x="481" y="1045"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uYD-zy-fmL">
@@ -1213,6 +1214,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="qyY-pu-6dB" customClass="AppTabBarController" customModule="debtFree" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="2Ry-Wg-GLm"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jLe-Cm-7rD">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1269,6 +1271,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Fpi-Na-lyv"/>
         <segue reference="4ur-Bd-Hev"/>
         <segue reference="8a6-nh-gLK"/>
         <segue reference="Um8-NJ-n9v"/>
