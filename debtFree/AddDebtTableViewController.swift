@@ -8,6 +8,8 @@
 // edit 
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -105,6 +107,24 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         } else {
             debtsData.addDebtOwedTo(debt: debt!)
         }
+        let db = Firestore.firestore()
+        let docID = Auth.auth().currentUser?.email
+            
+            db.collection("users").document(docID!).updateData([
+                "Debtee or Debtor Name" : "\(self.debtorDebteeName.text ?? "")",
+                "Amount Of Money" : "\(self.money.text ?? "")",
+                "Due-Date" : "\(self.dueDate.text ?? "")",
+                "Owe or Owed" : "\(self.oweOrOwed.text ?? "")",
+                "Notes" : "\(self.notes.text ?? "")"])
+            {
+                err in
+                if let err = err {
+                    print("Error writing debt :\(err)")
+                } else {
+                    print("Debt successfully written")
+                }
+            }
+        
         }
         if (segue.identifier == "addDueDate") {
             if let dest = segue.destination as? AddDueDateViewController {
@@ -154,8 +174,10 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
                 }
             self.dueDate.text = self.newDueDate!
         }
-    
     }
+    
+    
+    
     
     
     

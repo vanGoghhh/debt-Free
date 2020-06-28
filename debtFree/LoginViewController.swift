@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
 import FirebaseAuth
+import Firebase
 
 class LoginViewController: UIViewController {
+    
+    var acc: Account?
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -56,9 +60,22 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             } else {
                 //Get document ID of the user
-
-                
-                
+                let db = Firestore.firestore()
+                let docID = Auth.auth().currentUser?.email
+                let docRef = db.collection("users").document(docID!)
+                docRef.getDocument { (document, error) in
+                guard let accName = document?.get("accName"),
+                let accMoney = document?.get("accMoney")
+                    else {
+                        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+                                       
+                        self.view.window?.rootViewController = homeViewController
+                        self.view.window?.makeKeyAndVisible()
+                        return
+                    }
+                    
+                self.acc = Account(accName: accName as! String, accMoney: accMoney as! String)
+                AccountsDataBase.addAccount(acc: self.acc!)
                 //Transition to home screen
                 
                 let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
@@ -68,5 +85,5 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+    }
 }

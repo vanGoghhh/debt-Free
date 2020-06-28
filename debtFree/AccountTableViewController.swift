@@ -10,11 +10,12 @@ import UIKit
 
 class AccountTableViewController: UITableViewController {
     
-    var accounts:[Account] = [];
+    var accounts = AccountsDataBase.Accs
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = .none
+
     }
 
     // MARK: - Table view data source

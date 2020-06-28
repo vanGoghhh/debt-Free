@@ -53,6 +53,7 @@ class AddAccountTableViewController: UITableViewController {
         let name = accNameTxtField.text ?? ""
         let money =  accMoneyTxtField.text ?? ""
         account = Account(accName: name, accMoney: money)
+        AccountsDataBase.addAccount(acc: account!)
         addToFireBase(acc: account!)
         
     }
@@ -61,8 +62,8 @@ class AddAccountTableViewController: UITableViewController {
         let db = Firestore.firestore()
         let docID = Auth.auth().currentUser?.email
         db.collection("users").document(docID!).updateData([
-            "name": "\(acc.accName)",
-            "money": "\(acc.accMoney)"
+            "accName": "\(acc.accName)",
+            "accMoney": "\(acc.accMoney)"
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")

@@ -368,7 +368,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ET9-xL-o3b"/>
                     <connections>
-                        <outlet property="pieChart" destination="IMY-Nt-TZX" id="QNX-hE-UPT"/>
+                        <outlet property="pieChart" destination="IMY-Nt-TZX" id="cb6-73-VfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THk-uI-fXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

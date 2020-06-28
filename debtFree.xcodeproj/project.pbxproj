@@ -23,6 +23,7 @@
 		3D27459724875DEA00CE8EE3 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D27459624875DEA00CE8EE3 /* AccountTableViewCell.swift */; };
 		3D2745992487601D00CE8EE3 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2745982487601D00CE8EE3 /* AccountTableViewController.swift */; };
 		3D620F2524A83B2D00FD08B7 /* AddDueDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D620F2424A83B2C00FD08B7 /* AddDueDateViewController.swift */; };
+		3D88EC1B24A862B300BED230 /* AccountsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D88EC1A24A862B300BED230 /* AccountsDataBase.swift */; };
 		3D8A8B1C24971DAD00A70D54 /* AddDebtTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1B24971DAD00A70D54 /* AddDebtTableViewController.swift */; };
 		3D8A8B1E249721B500A70D54 /* Debt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1D249721B500A70D54 /* Debt.swift */; };
 		3D8A8B202497245900A70D54 /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */; };
@@ -85,6 +86,7 @@
 		3D27459624875DEA00CE8EE3 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		3D2745982487601D00CE8EE3 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		3D620F2424A83B2C00FD08B7 /* AddDueDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDueDateViewController.swift; sourceTree = "<group>"; };
+		3D88EC1A24A862B300BED230 /* AccountsDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsDataBase.swift; sourceTree = "<group>"; };
 		3D8A8B1B24971DAD00A70D54 /* AddDebtTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDebtTableViewController.swift; sourceTree = "<group>"; };
 		3D8A8B1D249721B500A70D54 /* Debt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debt.swift; sourceTree = "<group>"; };
 		3D8A8B1F2497245900A70D54 /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				3D17330824A4DEAD0016FDE6 /* AppTabBarController.swift */,
 				3D620F2424A83B2C00FD08B7 /* AddDueDateViewController.swift */,
 				3D17330024A4CA0D0016FDE6 /* DebtsInsightViewController.swift */,
+				3D88EC1A24A862B300BED230 /* AccountsDataBase.swift */,
 				3D17330224A4D1430016FDE6 /* NSUIColour+Hex.swift */,
 				716A16CA24A3918F002656CC /* HomeViewController2.swift */,
 				716A16C824A38C89002656CC /* HomeViewController.swift */,
@@ -530,6 +533,7 @@
 				3D2745992487601D00CE8EE3 /* AccountTableViewController.swift in Sources */,
 				3D2745952487522400CE8EE3 /* AddAccountTableViewController.swift in Sources */,
 				3D8A8B1C24971DAD00A70D54 /* AddDebtTableViewController.swift in Sources */,
+				3D88EC1B24A862B300BED230 /* AccountsDataBase.swift in Sources */,
 				3D8A8B24249B504500A70D54 /* IndividualDebtViewController.swift in Sources */,
 				716A16C524A37050002656CC /* Utilities.swift in Sources */,
 				716A16C124A364E6002656CC /* SignUpViewController.swift in Sources */,

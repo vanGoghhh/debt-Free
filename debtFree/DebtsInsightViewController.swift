@@ -13,8 +13,6 @@ class DebtsInsightViewController: DebtsViewController {
     
     @IBOutlet var pieChart : PieChartView!
     
- 
-    var entries = [PieChartDataEntry]()
     override func viewDidLoad() {
         super.viewDidLoad()      
         setUpPieChart()
@@ -31,18 +29,16 @@ class DebtsInsightViewController: DebtsViewController {
     }
     
     func updateChart() {
-        var moneyIn =  PieChartDataEntry(value: 0)
-        var moneyOut = PieChartDataEntry(value: 0)
+        let moneyIn =  PieChartDataEntry(value: Double(debtsData.recalculateDebtOwe()))
+        let moneyOut =  PieChartDataEntry(value: Double(debtsData.recalculateDebtOwedTo()))
         var values = [PieChartDataEntry]()
-        print(debtsData.debtsOwedTo)
-        print(debtsData.debtsOwe)
-        moneyIn.value = Double(debtsData.recalculateDebtOwe())
+
+      
         moneyIn.label = "Debts I owe"
-        moneyOut.value = Double(debtsData.recalculateDebtOwedTo())
         moneyOut.label = "Debts people owe me"
         values.append(moneyIn)
         values.append(moneyOut)
-                                       
+        print(moneyIn.value)
         let chartDataSet = PieChartDataSet(entries: values, label: "")
         let chartData = PieChartData(dataSet: chartDataSet)
         let colour1 = UIColor.red
