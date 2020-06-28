@@ -44,6 +44,8 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         
 
         setupAddTargetIsNotEmpty()
+        
+       
     }
     
     // Code for due date picker

@@ -14,6 +14,7 @@ import Firebase
 class LoginViewController: UIViewController {
     
     var acc: Account?
+    var debt: Debt?
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -67,12 +68,46 @@ class LoginViewController: UIViewController {
                 guard let accName = document?.get("accName"),
                 let accMoney = document?.get("accMoney")
                     else {
+                        guard let name = document?.get("Debtee or Debtor Name"),
+                            let money = document?.get("Amount Of Money"),
+                            let oweOrOwed = document?.get("Owe or Owed"),
+                            let date = document?.get("Due-Date")
+                            else {
+                                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+                                    self.view.window?.rootViewController = homeViewController
+                                    self.view.window?.makeKeyAndVisible()
+                                    return
+                            }
+                        self.debt = Debt(debtorDebteeName: name as! String, money: money as! String, date: date as! String, notes: "", oweOrOwed: oweOrOwed as! String)
+                        if (self.debt?.oweOrOwed == "Owe") {
+                            debtsData.addDebtOwe(debt: self.debt!)
+                        } else {
+                            debtsData.addDebtOwedTo(debt: self.debt!)
+                        }
+                        
                         let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
                                        
                         self.view.window?.rootViewController = homeViewController
                         self.view.window?.makeKeyAndVisible()
                         return
                     }
+                guard let name = document?.get("Debtee or Debtor Name"),
+                let money = document?.get("Amount Of Money"),
+                let oweOrOwed = document?.get("Owe or Owed"),
+                let date = document?.get("Due-Date")
+                    else {
+                        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+                        
+                        self.view.window?.rootViewController = homeViewController
+                        self.view.window?.makeKeyAndVisible()
+                        return 
+                    }
+                self.debt = Debt(debtorDebteeName: name as! String, money: money as! String, date: date as! String, notes: "", oweOrOwed: oweOrOwed as! String)
+                if (self.debt?.oweOrOwed == "Owe") {
+                    debtsData.addDebtOwe(debt: self.debt!)
+                } else {
+                    debtsData.addDebtOwedTo(debt: self.debt!)
+                }
                     
                 self.acc = Account(accName: accName as! String, accMoney: accMoney as! String)
                 AccountsDataBase.addAccount(acc: self.acc!)
@@ -82,8 +117,8 @@ class LoginViewController: UIViewController {
                 
                 self.view.window?.rootViewController = homeViewController
                 self.view.window?.makeKeyAndVisible()
+                }
             }
         }
-    }
     }
 }

@@ -10,8 +10,8 @@ import UIKit
 
 class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    var iOwe: [Debt] = []
-    var peopleOweMe: [Debt] = []
+    var iOwe = debtsData.debtsOwe
+    var peopleOweMe = debtsData.debtsOwedTo
     var editedDebtIndex: Int?
     var editedDebt: Debt?
     var currentTableView: Int!
@@ -79,6 +79,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let debt = sourceViewController.debt else { return}
         if debt.oweOrOwed == "Owe" {
             iOwe.append(debt)
+            print(iOwe)
             //debtsData.addDebtOwe(debt: debt)
             //print(debtsData.debtsOwedTo)
             //notification for oweing others
