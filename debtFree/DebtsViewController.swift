@@ -167,9 +167,11 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if (self.editedDebt?.oweOrOwed == "Owe") {
                 iOwe[editedDebtIndex!] = editedDebt!
                 updateTotal()
+                self.debtTableView.reloadData()
             } else {
                 peopleOweMe[editedDebtIndex!] = editedDebt!
                 updateTotal()
+                self.debtTableView.reloadData()
             }
         }
         if (segue.identifier == "removeDebt" || segue.identifier == "payOffDebt") {
@@ -178,9 +180,11 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if (debt.oweOrOwed == "Owe") {
                 iOwe.remove(at: editedDebtIndex!)
                 updateTotal()
+                self.debtTableView.reloadData()
             } else {
                 peopleOweMe.remove(at: editedDebtIndex!)
                 updateTotal()
+                self.debtTableView.reloadData()
             }
         }
     

@@ -119,7 +119,7 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
                 //print(self.debt)
             }
         }
-        if (segue.identifier == "removeDebt") {
+        if (segue.identifier == "removeDebt" || segue.identifier == "payOffDebt") {
             if let destination = segue.destination as? DebtsViewController {
                 destination.editedDebtIndex = 0
                 destination.editedDebt = nil
