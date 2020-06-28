@@ -7,6 +7,7 @@
 //  oof
 
 import UIKit
+import Firebase
 
 class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
     
@@ -122,6 +123,7 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
             if let destination = segue.destination as? DebtsViewController {
                 destination.editedDebtIndex = 0
                 destination.editedDebt = nil
+                removeDebtFirebase()
             }
         }
         if (segue.identifier == "changeDate") {
@@ -179,6 +181,24 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
         removeDebt.addAction(dontRemove)
         removeDebt.addAction(yesRemovePls)
         self.present(removeDebt, animated: true, completion: nil)
+    }
+    
+    func removeDebtFirebase() {
+        let db = Firestore.firestore()
+        let docID = Auth.auth().currentUser?.email
+        db.collection("users").document(docID!).updateData([
+            "Amount of Money" : FieldValue.delete(),
+            "Debtee or Debtor Name" : FieldValue.delete(),
+            "Due-Date" : FieldValue.delete(),
+            "Notes" : FieldValue.delete(),
+            "Owe or Owed" : FieldValue.delete()
+        ]) { err in
+            if let err = err {
+                print("Error deleting field : \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
     }
     
     @IBAction func payOFF(_ sender: Any) {

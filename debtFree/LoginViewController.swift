@@ -96,6 +96,8 @@ class LoginViewController: UIViewController {
                 let oweOrOwed = document?.get("Owe or Owed"),
                 let date = document?.get("Due-Date")
                     else {
+                        self.acc = Account(accName: accName as! String, accMoney: accMoney as! String)
+                        AccountsDataBase.addAccount(acc: self.acc!)
                         let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
                         
                         self.view.window?.rootViewController = homeViewController

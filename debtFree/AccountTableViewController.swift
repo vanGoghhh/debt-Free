@@ -7,6 +7,7 @@
 // LOL
 
 import UIKit
+import Firebase
 
 class AccountTableViewController: UITableViewController {
     
@@ -51,12 +52,27 @@ class AccountTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             accounts.remove(at: indexPath.row);
+            removeAccFirebase()
             tableView.deleteRows(at: [indexPath ], with: .automatic)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
+    func removeAccFirebase() {
+        let db = Firestore.firestore()
+        let docID = Auth.auth().currentUser?.email
+        db.collection("users").document(docID!).updateData([
+            "accName" : FieldValue.delete(),
+            "accMoney" : FieldValue.delete()
+        ]) { err in
+            if let err = err {
+                print("Error deleting field : \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "AddAccount" {
 //            let indexPath = tableView.indexPathForSelectedRow!
