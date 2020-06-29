@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     
     var acc: Account?
     var debt: Debt?
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpElements()
         // Do any additional setup after loading the view.
     }
@@ -35,16 +35,6 @@ class LoginViewController: UIViewController {
         Utilities.styleFilledButton(loginButton)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func loginTapped(_ sender: Any) {
         
         //Validate text fields
@@ -64,63 +54,49 @@ class LoginViewController: UIViewController {
                 let db = Firestore.firestore()
                 let docID = Auth.auth().currentUser?.email
                 let docRef = db.collection("users").document(docID!)
-                docRef.getDocument { (document, error) in
-                guard let accName = document?.get("accName"),
-                let accMoney = document?.get("accMoney")
-                    else {
-                        guard let name = document?.get("Debtee or Debtor Name"),
-                            let money = document?.get("Amount Of Money"),
-                            let oweOrOwed = document?.get("Owe or Owed"),
-                            let date = document?.get("Due-Date")
-                            else {
-                                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
-                                    self.view.window?.rootViewController = homeViewController
-                                    self.view.window?.makeKeyAndVisible()
-                                    return
+                let debtCollection = docRef.collection("Debts")
+                debtCollection.getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let name = document.get("Debtee or Debtor Name")
+                            let money = document.get("Amount Of Money")
+                            let oweOrOwed = document.get("Owe or Owed")
+                            let date = document.get("Due-Date")
+                            self.debt = Debt(debtorDebteeName: name as! String, money: money as! String, date: date as! String, notes: "", oweOrOwed: oweOrOwed as! String)
+                            if (self.debt?.oweOrOwed == "Owe") {
+                                debtsData.addDebtOwe(debt: self.debt!)
+                            } else {
+                                debtsData.addDebtOwedTo(debt: self.debt!)
+                                print(debtsData.debtsOwedTo)
                             }
-                        self.debt = Debt(debtorDebteeName: name as! String, money: money as! String, date: date as! String, notes: "", oweOrOwed: oweOrOwed as! String)
-                        if (self.debt?.oweOrOwed == "Owe") {
-                            debtsData.addDebtOwe(debt: self.debt!)
-                        } else {
-                            debtsData.addDebtOwedTo(debt: self.debt!)
                         }
-                        
-                        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
-                                       
-                        self.view.window?.rootViewController = homeViewController
-                        self.view.window?.makeKeyAndVisible()
-                        return
+                        let db2 = Firestore.firestore()
+                        let docID2 = Auth.auth().currentUser?.email
+                        let docRef2 = db2.collection("users").document(docID2!)
+                        let accountCollection = docRef2.collection("Accounts")
+                        accountCollection.getDocuments() { (querySnapshot, err) in
+                            if let err = err {
+                                print("Error getting documents: \(err)")
+                            } else {
+                                for document in querySnapshot!.documents {
+                                    let accName = document.get("Account Name")
+                                    let accMoney = document.get("Account Money")
+                                    self.acc = Account(accName: accName as! String, accMoney: accMoney as! String)
+                                    AccountsDataBase.addAccount(acc: self.acc!)
+                                }
+                            }
+                            let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+                            self.view.window?.rootViewController = homeViewController
+                            self.view.window?.makeKeyAndVisible()
+                        }
                     }
-                guard let name = document?.get("Debtee or Debtor Name"),
-                let money = document?.get("Amount Of Money"),
-                let oweOrOwed = document?.get("Owe or Owed"),
-                let date = document?.get("Due-Date")
-                    else {
-                        self.acc = Account(accName: accName as! String, accMoney: accMoney as! String)
-                        AccountsDataBase.addAccount(acc: self.acc!)
-                        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
-                        
-                        self.view.window?.rootViewController = homeViewController
-                        self.view.window?.makeKeyAndVisible()
-                        return 
-                    }
-                self.debt = Debt(debtorDebteeName: name as! String, money: money as! String, date: date as! String, notes: "", oweOrOwed: oweOrOwed as! String)
-                if (self.debt?.oweOrOwed == "Owe") {
-                    debtsData.addDebtOwe(debt: self.debt!)
-                } else {
-                    debtsData.addDebtOwedTo(debt: self.debt!)
-                }
-                    
-                self.acc = Account(accName: accName as! String, accMoney: accMoney as! String)
-                AccountsDataBase.addAccount(acc: self.acc!)
-                //Transition to home screen
-                
-                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
-                
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()
                 }
             }
         }
     }
 }
+
+
+

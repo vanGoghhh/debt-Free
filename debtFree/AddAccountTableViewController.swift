@@ -54,24 +54,24 @@ class AddAccountTableViewController: UITableViewController {
         let money =  accMoneyTxtField.text ?? ""
         account = Account(accName: name, accMoney: money)
         AccountsDataBase.addAccount(acc: account!)
-        addToFireBase(acc: account!)
+        AccountsDataBase.addToFireBase()
         
     }
     
-     func addToFireBase(acc: Account) {
-        let db = Firestore.firestore()
-        let docID = Auth.auth().currentUser?.email
-        db.collection("users").document(docID!).updateData([
-            "accName": "\(acc.accName)",
-            "accMoney": "\(acc.accMoney)"
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
-    }
+//     func addToFireBase(acc: Account) {
+//        let db = Firestore.firestore()
+//        let docID = Auth.auth().currentUser?.email
+//        db.collection("users").document(docID!).updateData([
+//            "accName": "\(acc.accName)",
+//            "accMoney": "\(acc.accMoney)"
+//        ]) { err in
+//            if let err = err {
+//                print("Error writing document: \(err)")
+//            } else {
+//                print("Document successfully written!")
+//            }
+//        }
+//    }
     
 
 }

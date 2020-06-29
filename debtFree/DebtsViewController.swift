@@ -32,6 +32,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.debtTableView?.estimatedRowHeight = 600
         self.debtTableView?.rowHeight =  UITableView.automaticDimension
         self.debtTableView?.allowsSelection = true
+        debtTableView.reloadData()
      //   self.debtTableView.rowHeight = UITableViewAutomatic
         // Do any additional setup after loading the view.
     }

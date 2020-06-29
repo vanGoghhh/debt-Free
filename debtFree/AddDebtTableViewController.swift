@@ -10,6 +10,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseDatabase
 
 class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -97,61 +98,42 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
     // Code for transfering data to debts table
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "debtSaveUnwind") {
-        super.prepare(for: segue, sender: sender)
-        let name = debtorDebteeName.text ?? ""
-        let mon =  money.text ?? ""
-        let date = dueDate.text ?? ""
-        let note = notes.text ?? ""
-        let owe = oweOrOwed.text ?? ""
-        debt = Debt(debtorDebteeName: name, money: mon, date: date, notes: note, oweOrOwed: owe)
-        if (debt!.oweOrOwed == "Owe") {
-            debtsData.addDebtOwe(debt: debt!)
-        } else {
-            debtsData.addDebtOwedTo(debt: debt!)
-        }
-        let db = Firestore.firestore()
-        let docID = Auth.auth().currentUser?.email
-            
-            db.collection("users").document(docID!).updateData([
-                "Debtee or Debtor Name" : "\(self.debtorDebteeName.text ?? "")",
-                "Amount Of Money" : "\(self.money.text ?? "")",
-                "Due-Date" : "\(self.dueDate.text ?? "")",
-                "Owe or Owed" : "\(self.oweOrOwed.text ?? "")",
-                "Notes" : "\(self.notes.text ?? "")"])
-            {
-                err in
-                if let err = err {
-                    print("Error writing debt :\(err)")
-                } else {
-                    print("Debt successfully written")
-                }
+            super.prepare(for: segue, sender: sender)
+            let name = debtorDebteeName.text ?? ""
+            let mon =  money.text ?? ""
+            let date = dueDate.text ?? ""
+            let note = notes.text ?? ""
+            let owe = oweOrOwed.text ?? ""
+            debt = Debt(debtorDebteeName: name, money: mon, date: date, notes: note, oweOrOwed: owe)
+            if (debt!.oweOrOwed == "Owe") {
+                debtsData.addDebtOwe(debt: debt!)
+            } else {
+                debtsData.addDebtOwedTo(debt: debt!)
             }
-        
+            debtsData.updateFireBase()
+            
         }
         if (segue.identifier == "addDueDate") {
             if let dest = segue.destination as? AddDueDateViewController {
-            let date = Date()
-            let formatter = DateFormatter()
+                let date = Date()
+                let formatter = DateFormatter()
                 formatter.dateFormat = "MMM d, yyyy"
-            let dateInString = formatter.string(from: date)
-            dest.ogDate = dateInString
+                let dateInString = formatter.string(from: date)
+                dest.ogDate = dateInString
             }
         }
     }
     // End of code for transfering data to table
     
     
-    
-
     func setupAddTargetIsNotEmpty() {
-        
         saveButton.isEnabled = false
-        
         money.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
         debtorDebteeName.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
         oweOrOwed.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .allEditingEvents)
         dueDate.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .allEditingEvents)
     }
+    
     @objc func textFieldsIsNotEmpty(sender: UITextField) {
         
         guard
