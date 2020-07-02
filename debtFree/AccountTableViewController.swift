@@ -12,6 +12,7 @@ import Firebase
 class AccountTableViewController: UITableViewController {
     
     var accounts = AccountsDataBase.Accs
+    var debtMoney: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +20,11 @@ class AccountTableViewController: UITableViewController {
 
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1;
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return accounts.count
     }
 
@@ -48,15 +45,33 @@ class AccountTableViewController: UITableViewController {
         return .delete
     }
     
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             accounts.remove(at: indexPath.row);
             removeAccFirebase()
             tableView.deleteRows(at: [indexPath ], with: .automatic)
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        guard let debt = self.debtMoney
+            else {
+                return nil
+        }
+        return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chooseThisAccToPayDebt = UIAlertController(title: nil, message: "Pay off debt with this account?", preferredStyle: .alert)
+        let yesChooseThisAcc = UIAlertAction(title: "Yes", style: .default, handler: { action in
+            print(Int( AccountsDataBase.Accs[indexPath.row].accMoney))
+                AccountsDataBase.Accs[indexPath.row].accMoney = String(Int(AccountsDataBase.Accs[indexPath.row].accMoney)! - Int(self.debtMoney!)!)
+        })
+        let noDontChooseThisAcc = UIAlertAction(title: "No", style: .default, handler: nil)
+        chooseThisAccToPayDebt.addAction(yesChooseThisAcc)
+        chooseThisAccToPayDebt.addAction(noDontChooseThisAcc)
+        self.present(chooseThisAccToPayDebt, animated: true, completion: nil)
     }
     
     func removeAccFirebase() {
@@ -73,15 +88,6 @@ class AccountTableViewController: UITableViewController {
             }
         }
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "AddAccount" {
-//            let indexPath = tableView.indexPathForSelectedRow!
-//            let account = accounts[indexPath.row]
-//            let navController = segue.destination as! UINavigationController
-//            let addAccountTableViewController = navController.topViewController as! AddAccountTableViewController
-//            addAccountTableViewController.account = account
-//        }
-//    }
     
     @IBAction func unwindToAccountTableView(segue: UIStoryboardSegue) {
         guard segue.identifier == "saveUnwind",

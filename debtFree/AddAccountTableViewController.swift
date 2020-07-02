@@ -57,21 +57,7 @@ class AddAccountTableViewController: UITableViewController {
         AccountsDataBase.addToFireBase()
         
     }
-    
-//     func addToFireBase(acc: Account) {
-//        let db = Firestore.firestore()
-//        let docID = Auth.auth().currentUser?.email
-//        db.collection("users").document(docID!).updateData([
-//            "accName": "\(acc.accName)",
-//            "accMoney": "\(acc.accMoney)"
-//        ]) { err in
-//            if let err = err {
-//                print("Error writing document: \(err)")
-//            } else {
-//                print("Document successfully written!")
-//            }
-//        }
-//    }
+
     
 
 }

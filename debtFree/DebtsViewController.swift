@@ -7,6 +7,8 @@
 // oof
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -80,7 +82,6 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let debt = sourceViewController.debt else { return}
         if debt.oweOrOwed == "Owe" {
             iOwe.append(debt)
-            print(iOwe)
             //debtsData.addDebtOwe(debt: debt)
             //print(debtsData.debtsOwedTo)
             //notification for oweing others
@@ -166,28 +167,59 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func unwindFromEditing(segue: UIStoryboardSegue) {
         if (segue.identifier == "editingUnwind") {
             if (self.editedDebt?.oweOrOwed == "Owe") {
+                debtsData.debtsOwe[editedDebtIndex!] = editedDebt!
                 iOwe[editedDebtIndex!] = editedDebt!
                 updateTotal()
+                debtsData.updateFireBase()
                 self.debtTableView.reloadData()
             } else {
+                debtsData.debtsOwedTo[editedDebtIndex!] = editedDebt!
                 peopleOweMe[editedDebtIndex!] = editedDebt!
+                debtsData.updateFireBase()
                 updateTotal()
                 self.debtTableView.reloadData()
             }
         }
         if (segue.identifier == "removeDebt" || segue.identifier == "payOffDebt") {
             guard let sourceViewController = segue.source as? IndividualDebtViewController,
-            var debt = sourceViewController.debt else {return}
+                var debt = sourceViewController.debt else {return}
             if (debt.oweOrOwed == "Owe") {
+                debtsData.debtsOwe.remove(at: editedDebtIndex!)
                 iOwe.remove(at: editedDebtIndex!)
+                let db = Firestore.firestore()
+                let docID = Auth.auth().currentUser?.email
+                db.collection("users").document(docID!).collection("Debts").getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting doc :\(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let id = document.documentID
+                            db.collection("users").document(docID!).collection("Debts").document(id).delete()
+                        }
+                    }
+                    debtsData.updateFireBase()
+                }
                 updateTotal()
                 self.debtTableView.reloadData()
             } else {
-                peopleOweMe.remove(at: editedDebtIndex!)
+                debtsData.debtsOwedTo.remove(at: editedDebtIndex!)
+                peopleOweMe.remove(at: editedDebtIndex! )
+                let db = Firestore.firestore()
+                let docID = Auth.auth().currentUser?.email
+                db.collection("users").document(docID!).collection("Debts").getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting doc :\(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let id = document.documentID
+                            db.collection("users").document(docID!).collection("Debts").document(id).delete()
+                        }
+                    }
+                    debtsData.updateFireBase()
+                }
                 updateTotal()
                 self.debtTableView.reloadData()
             }
         }
-    
     }
 }

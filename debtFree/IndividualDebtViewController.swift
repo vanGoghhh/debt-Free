@@ -121,9 +121,8 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
         }
         if (segue.identifier == "removeDebt" || segue.identifier == "payOffDebt") {
             if let destination = segue.destination as? DebtsViewController {
-                destination.editedDebtIndex = 0
+                destination.editedDebtIndex = self.arrIndex
                 destination.editedDebt = nil
-                removeDebtFirebase()
             }
         }
         if (segue.identifier == "changeDate") {
@@ -131,7 +130,11 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
                 destination.originalDate = duedate.text
             }
         }
-        
+        if (segue.identifier == "selectAccount") {
+            if let destination = segue.destination as? AccountTableViewController {
+                destination.debtMoney = debt?.money
+            }
+        }
     }
     
     @IBAction func incOrRedDebt(_ sender: Any) {
@@ -183,28 +186,24 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
         self.present(removeDebt, animated: true, completion: nil)
     }
     
-    func removeDebtFirebase() {
-        let db = Firestore.firestore()
-        let docID = Auth.auth().currentUser?.email
-        db.collection("users").document(docID!).updateData([
-            "Amount of Money" : FieldValue.delete(),
-            "Debtee or Debtor Name" : FieldValue.delete(),
-            "Due-Date" : FieldValue.delete(),
-            "Notes" : FieldValue.delete(),
-            "Owe or Owed" : FieldValue.delete()
-        ]) { err in
-            if let err = err {
-                print("Error deleting field : \(err)")
-            } else {
-                print("Document successfully updated")
-            }
-        }
-    }
     
     @IBAction func payOFF(_ sender: Any) {
         let confirmPayOff = UIAlertController(title: "Pay Off", message: "Do you want to pay off this debt?", preferredStyle: .alert)
-        let yesPayOffDebt =  UIAlertAction(title: "Yes", style: .default, handler: {action in
-            self.performSegue(withIdentifier: "payOffDebt", sender: self)
+        let yesPayOffDebt =  UIAlertAction(title: "Yes", style: .default, handler: {
+            action in
+            let payOffWithCurrentAccount = UIAlertController(title: nil, message: "Do you want to pay off this debt with an account stored?", preferredStyle: .alert)
+            let yesPayOffDebtWithAccount = UIAlertAction(title: "Yes", style: .default, handler: {(action) in
+                if (!AccountsDataBase.Accs.isEmpty) {
+                    self.performSegue(withIdentifier: "selectAccount", sender: self)}
+                else {
+                    let noAccountToPayWith = UIAlertController(title: nil, message: "No Account to pay off debt with!", preferredStyle: .alert)
+                    self.present(noAccountToPayWith, animated: true, completion: nil)
+                }
+            })
+            let noDoNotPayOffWithCurrentAccount = UIAlertAction(title: "No", style: .default, handler: {(action) in  self.performSegue(withIdentifier: "payOffDebt", sender: self)})
+            payOffWithCurrentAccount.addAction(yesPayOffDebtWithAccount)
+            payOffWithCurrentAccount.addAction(noDoNotPayOffWithCurrentAccount)
+            self.present(payOffWithCurrentAccount, animated: true, completion: nil)
         })
         let noCancelPayOff = UIAlertAction(title: "No", style: .default)
         confirmPayOff.addAction(yesPayOffDebt)
@@ -220,15 +219,4 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
             self.debt?.date = self.newDate!
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

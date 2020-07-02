@@ -51,6 +51,8 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             } else {
                 //Get document ID of the user
+                //debtsData.updateFireBase()
+                print(debtsData.debtsOwedTo)
                 let db = Firestore.firestore()
                 let docID = Auth.auth().currentUser?.email
                 let docRef = db.collection("users").document(docID!)
@@ -69,7 +71,6 @@ class LoginViewController: UIViewController {
                                 debtsData.addDebtOwe(debt: self.debt!)
                             } else {
                                 debtsData.addDebtOwedTo(debt: self.debt!)
-                                print(debtsData.debtsOwedTo)
                             }
                         }
                         let db2 = Firestore.firestore()
