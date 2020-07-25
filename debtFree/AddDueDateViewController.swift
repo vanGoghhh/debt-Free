@@ -20,6 +20,7 @@ class AddDueDateViewController: UIViewController, FSCalendarDelegate, FSCalendar
         super.viewDidLoad()
         calendar.delegate = self
         calendar.dataSource = self
+        self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         // Do any additional setup after loading the view.
     }
     

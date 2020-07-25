@@ -12,13 +12,13 @@ class AppTabBarController: UITabBarController, UITabBarControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = self
+        self.delegate = self
         // Do any additional setup after loading the view.
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let firstVC = viewController as? DebtsInsightViewController  {
-            //firstVC.updateChart()
+        if let firstVC = viewController as? AccountsViewController {
+            firstVC.accountTable.reloadData()
         }
     }
     

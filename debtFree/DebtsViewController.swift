@@ -9,8 +9,11 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
+import BetterSegmentedControl
 
-class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+
+class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var iOwe = debtsData.debtsOwe
     var peopleOweMe = debtsData.debtsOwedTo
@@ -19,9 +22,15 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var currentTableView: Int!
     var newDebtName: String!
     var newDueDate: String!
+    var paidDebt: Debt?
+    var usedAcc: Account?
+    var usedAccIndex: Int?
+    var tableIndex: Int!
+    var masterArray = debtsData.debtsOwe
+    
     @IBOutlet var debtTableView: UITableView!
     @IBOutlet var totalMoneyLabel: UILabel!
-    @IBOutlet var typeOfDebtsSegControl: UISegmentedControl!
+    @IBOutlet var typeOfDebts: BetterSegmentedControl!
     
     
     override func viewDidLoad() {
@@ -31,12 +40,13 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         debtTableView?.delegate = self
         debtTableView?.dataSource = self
         self.debtTableView?.separatorStyle = .none
-        self.debtTableView?.estimatedRowHeight = 600
+        self.debtTableView?.estimatedRowHeight = 100
         self.debtTableView?.rowHeight =  UITableView.automaticDimension
         self.debtTableView?.allowsSelection = true
-        debtTableView.reloadData()
-     //   self.debtTableView.rowHeight = UITableViewAutomatic
-        // Do any additional setup after loading the view.
+        self.debtTableView?.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        self.view.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        self.totalMoneyLabel?.textColor =  UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        configSeg()
     }
     
      func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,34 +55,19 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (currentTableView == 0) {
-            return iOwe.count
-        } else {
-            return peopleOweMe.count
-        }
+        return masterArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = debtTableView.dequeueReusableCell(withIdentifier: "debtCell", for: indexPath) as! DebtTableViewCell
-        switch (typeOfDebtsSegControl.selectedSegmentIndex) {
-        case 0:
-            cell.debtorDebteeName!.text = iOwe[indexPath.row].debtorDebteeName
-            cell.amountOwed!.text = "$" + iOwe[indexPath.row].money
-            cell.dueDate!.text = iOwe[indexPath.row].date
-            break
-        case 1:
-            if peopleOweMe.isEmpty {
-                break;
-            } else {
-            cell.debtorDebteeName!.text = peopleOweMe[indexPath.row].debtorDebteeName
-            cell.amountOwed!.text = "$" + peopleOweMe[indexPath.row].money
-            cell.dueDate!.text = peopleOweMe[indexPath.row].date
-            }
-        
-        default:
-            break
-        }
+        cell.debtorDebteeName!.text = masterArray[indexPath.row].debtorDebteeName
+        cell.amountOwed!.text = "$" + masterArray[indexPath.row].money
+        cell.dueDate!.text = masterArray[indexPath.row].date
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     @IBAction func unwindToDebtTableView(segue: UIStoryboardSegue) {
@@ -149,16 +144,16 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if let destination = segue.destination as? IndividualDebtViewController {
-            if (currentTableView == 0) {
+        if (segue.identifier == "showUpdatedAcc") {
+            if let destination = segue.destination as? AccountsViewController {
+                destination.usedAcc = self.usedAcc
+                destination.usedAccIndex = self.usedAccIndex
+            }
+        } else {
+            super.prepare(for: segue, sender: sender)
+            if let destination = segue.destination as? IndividualDebtViewController {
                 let indexPath = sender as! IndexPath
-                destination.debt = iOwe[indexPath.row]
-                destination.arrIndex =  indexPath.row
-                
-            } else {
-                let indexPath = sender as! IndexPath
-                destination.debt = peopleOweMe[indexPath.row]
+                destination.debt = masterArray[indexPath.row]
                 destination.arrIndex = indexPath.row
             }
         }
@@ -186,40 +181,117 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if (debt.oweOrOwed == "Owe") {
                 debtsData.debtsOwe.remove(at: editedDebtIndex!)
                 iOwe.remove(at: editedDebtIndex!)
-                let db = Firestore.firestore()
-                let docID = Auth.auth().currentUser?.email
-                db.collection("users").document(docID!).collection("Debts").getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting doc :\(err)")
-                    } else {
-                        for document in querySnapshot!.documents {
-                            let id = document.documentID
-                            db.collection("users").document(docID!).collection("Debts").document(id).delete()
-                        }
-                    }
-                    debtsData.updateFireBase()
-                }
+                self.fireBaseDebtRefresh()
                 updateTotal()
                 self.debtTableView.reloadData()
             } else {
                 debtsData.debtsOwedTo.remove(at: editedDebtIndex!)
                 peopleOweMe.remove(at: editedDebtIndex! )
-                let db = Firestore.firestore()
-                let docID = Auth.auth().currentUser?.email
-                db.collection("users").document(docID!).collection("Debts").getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting doc :\(err)")
-                    } else {
-                        for document in querySnapshot!.documents {
-                            let id = document.documentID
-                            db.collection("users").document(docID!).collection("Debts").document(id).delete()
-                        }
-                    }
-                    debtsData.updateFireBase()
-                }
+                self.fireBaseDebtRefresh()
                 updateTotal()
                 self.debtTableView.reloadData()
             }
         }
+        if (segue.identifier == "payOffDebtWithAcc") {
+            guard segue.source is SelectAnAccountViewController else { return}
+            if (paidDebt!.oweOrOwed == "Owe") {
+                if let index = self.iOwe.firstIndex(of: paidDebt!) {
+                    self.iOwe.remove(at: index)
+                }
+            } else {
+                if let index = self.peopleOweMe.firstIndex(of: paidDebt!) {
+                    self.peopleOweMe.remove(at: index)
+                }
+            }
+            let dest = AccountsViewController()
+            dest.accounts[usedAccIndex!] = usedAcc!
+            print(dest.accounts)
+            self.fireBaseDebtRefresh()
+            updateTotal()
+            self.debtTableView.reloadData()
+            let showUpdatedAcc = UIAlertController(title: nil, message: "Your Accounts have been updated!", preferredStyle: .alert)
+            let okShowMe = UIAlertAction(title: "Ok", style: .default, handler: { action in
+                self.performSegue(withIdentifier: "showUpdatedAcc", sender: self)
+            })
+            showUpdatedAcc.addAction(okShowMe)
+            self.present(showUpdatedAcc, animated: true, completion: nil)
+        }
+    }
+    
+    func fireBaseDebtRefresh() {
+        let db = Firestore.firestore()
+        let docID = Auth.auth().currentUser?.email
+        db.collection("users").document(docID!).collection("Debts").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting doc :\(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let id = document.documentID
+                    db.collection("users").document(docID!).collection("Debts").document(id).delete()
+                }
+            }
+            debtsData.updateFireBase()
+        }
+    }
+    
+    func setCellBorderColour(view: UIView) {
+        let topColour = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+        let bottomColour = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [bottomColour, topColour]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func generateRandomPastelColor(withMixedColor mixColor: UIColor?) -> UIColor {
+        // Randomly generate number in closure
+        let randomColorGenerator = { ()-> CGFloat in
+            CGFloat(arc4random() % 256 ) / 256
+        }
+            
+        var red: CGFloat = randomColorGenerator()
+        var green: CGFloat = randomColorGenerator()
+        var blue: CGFloat = randomColorGenerator()
+            
+        // Mix the color
+        if let mixColor = mixColor {
+            var mixRed: CGFloat = 0, mixGreen: CGFloat = 0, mixBlue: CGFloat = 0;
+            mixColor.getRed(&mixRed, green: &mixGreen, blue: &mixBlue, alpha: nil)
+            
+            red = (red + mixRed) / 2;
+            green = (green + mixGreen) / 2;
+            blue = (blue + mixBlue) / 2;
+        }
+            
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
+    }
+    
+    
+    
+    
+    func configSeg() {
+        typeOfDebts.addTarget(self, action: #selector(handleChangeVals(_:)), for: .valueChanged)
+        typeOfDebts.segments = LabelSegment.segments(withTitles: ["Debts I Owe", "Debts People Owe Me"],normalFont: UIFont(name: "HelveticaNeue-Light", size: 14.0)!,
+        normalTextColor: .lightGray,
+        selectedFont: UIFont(name: "HelveticaNeue-Bold", size: 14.0)!,
+        selectedTextColor: .white)
+        
+        typeOfDebts.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        typeOfDebts.indicatorViewBackgroundColor = UIColor(red: 65/255, green: 65/255, blue: 75/255, alpha: 1)
+    
+        
+    }
+    
+    @objc func handleChangeVals(_ sender: BetterSegmentedControl) {
+        switch (sender.index) {
+        case 0:
+            masterArray = debtsData.debtsOwe
+        case 1:
+            masterArray = debtsData.debtsOwedTo
+        default:
+            break
+        }
+        self.debtTableView.reloadData()
     }
 }

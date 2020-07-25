@@ -11,27 +11,27 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseDatabase
+import CocoaTextField
+import PMSuperButton
 
 class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
-    @IBOutlet var money: UITextField!
-    @IBOutlet var notes: UITextField!
-    @IBOutlet var debtorDebteeName: UITextField!
-    @IBOutlet var saveButton: UIBarButtonItem!
-    @IBOutlet var oweOrOwed: UITextField!
-    @IBOutlet var dueDate: UITextField!
+    @IBOutlet var money: CocoaTextField!
+    @IBOutlet var notes: CocoaTextField!
+    @IBOutlet var debtorDebteeName: CocoaTextField!
+    @IBOutlet var oweOrOwed: CocoaTextField!
+    @IBOutlet var dueDate: CocoaTextField!
+    @IBOutlet var cellView: [UIView]!
+    @IBOutlet var saveButton: PMSuperButton!
+    @IBOutlet var labelView: UIView!
+    
     
     var debt: Debt?
     var newDueDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.separatorStyle = .none
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.tableView.separatorColor = UIColor.clear
         money.keyboardType = .numberPad
         
         let oweOrOwedPicker = UIPickerView()
@@ -40,13 +40,30 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         
         dueDate.delegate = self
         
+        setUpTextField(textField: money)
+        setUpTextField(textField: notes)
+        setUpTextField(textField: debtorDebteeName)
+        setUpTextField(textField: oweOrOwed)
+        setUpTextField(textField: dueDate)
+        
         let tapGesture =  UITapGestureRecognizer(target: self, action: #selector(AddDebtTableViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         
 
         setupAddTargetIsNotEmpty()
         
-       
+        self.view.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        
+        for view in self.cellView {
+            view.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        }
+        
+        self.saveButton.gradientStartColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
+        self.saveButton.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
+        
+        self.labelView.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        
+        //self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "debtBG.png")!)
     }
     
     // Code for due date picker
@@ -160,8 +177,13 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         }
     }
     
-    
-    
+    func setUpTextField(textField: CocoaTextField) {
+        textField.inactiveHintColor = UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1)
+        textField.activeHintColor = UIColor(red: 94/255, green: 186/255, blue: 187/255, alpha: 1)
+        textField.focusedBackgroundColor = UIColor(red: 236/255, green: 239/255, blue: 239/255, alpha: 1)
+        textField.defaultBackgroundColor = UIColor(red: 55/255, green: 55/255, blue: 65/255, alpha: 1)
+        textField.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+    }
     
     
     

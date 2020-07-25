@@ -8,8 +8,10 @@
 
 import UIKit
 import Firebase
+import PMSuperButton
 
-class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
+
+class IndividualDebtViewController: UIViewController, UITextFieldDelegate{
     
     var debt: Debt?
     var arrIndex: Int?
@@ -20,25 +22,21 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var name: UITextField!
     @IBOutlet var duedate: UILabel!
     @IBOutlet var notes: UILabel!
-    @IBOutlet var payOffButton: UIButton!
+    @IBOutlet var payOffButton: PMSuperButton!
+    @IBOutlet var viewBG: UIView!
+    @IBOutlet var cellView: [UIView]!
+    @IBOutlet var saveChanges: PMSuperButton!
+    @IBOutlet var slider: CustomSlider!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         name.delegate = self
-        money.text = "$"  + debt!.money
+        money.text =  debt!.money
         name.text = debt!.debtorDebteeName
         duedate.text = debt!.date
         notes.text = debt!.notes
        
-        
-        payOffButton.contentEdgeInsets = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
-        payOffButton.backgroundColor = UIColor.systemTeal
-        payOffButton.layer.cornerRadius = 5
-        payOffButton.layer.borderWidth = 1
-        payOffButton.layer.borderColor =
-            UIColor.black.cgColor
-     
-        
         money.isUserInteractionEnabled = true
         let tapChangeMoney = UITapGestureRecognizer(target: self, action: #selector(IndividualDebtViewController.tapChangeMoney(sender:)))
         money.addGestureRecognizer(tapChangeMoney)
@@ -50,8 +48,25 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
             #selector(IndividualDebtViewController.tapChangeDate(sender:)))
         duedate.addGestureRecognizer(tapChangeDate)
         
+        let gradientColour = CAGradientLayer()
+        gradientColour.frame = viewBG.bounds
+        gradientColour.colors = [UIColor.black, UIColor.gray]
+        viewBG.layer.addSublayer(gradientColour)
         
-        // Do any additional setup after loading the view.
+        self.viewBG.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        for view in self.cellView {
+            view.backgroundColor = UIColor(red: 65/255, green: 65/255, blue: 75/255, alpha: 1)
+            view.layer.cornerRadius = 10
+        }
+        self.name.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        self.name.textColor = UIColor.white
+        self.name.textAlignment = .center
+        self.payOffButton.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
+        self.payOffButton.gradientStartColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
+        self.saveChanges.gradientStartColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
+        self.saveChanges.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
+        
+        configSlider()
     }
     
     @objc func tapChangeDate(sender: UITapGestureRecognizer) {
@@ -59,7 +74,6 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(sender: UITextField) {
-        print(name.text!)
         newName = name.text!
         self.debt?.debtorDebteeName = newName!
     }
@@ -115,6 +129,7 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
                 destination.editedDebtIndex = self.arrIndex
                 destination.newDebtName = self.newName
                 //self.debt?.date = newDate!
+                print(self.debt)
                 destination.editedDebt = self.debt
                 //print(self.debt)
             }
@@ -131,8 +146,8 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
             }
         }
         if (segue.identifier == "selectAccount") {
-            if let destination = segue.destination as? AccountTableViewController {
-                destination.debtMoney = debt?.money
+            if let destination = segue.destination as? SelectAnAccountViewController {
+                destination.paidDebt = self.debt
             }
         }
     }
@@ -175,18 +190,6 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
         self.present(changeDebtAlert, animated: true, completion: nil)
     }
     
-    @IBAction func removeDebt(_ sender: Any) {
-        let removeDebt = UIAlertController(title: nil, message: "Do you want to remove this debt?", preferredStyle: .alert)
-        let yesRemovePls = UIAlertAction(title: "Yes", style: .default, handler: {action in
-            self.performSegue(withIdentifier: "removeDebt", sender: self)
-        })
-        let dontRemove = UIAlertAction(title: "Cancel", style: .default)
-        removeDebt.addAction(dontRemove)
-        removeDebt.addAction(yesRemovePls)
-        self.present(removeDebt, animated: true, completion: nil)
-    }
-    
-    
     @IBAction func payOFF(_ sender: Any) {
         let confirmPayOff = UIAlertController(title: "Pay Off", message: "Do you want to pay off this debt?", preferredStyle: .alert)
         let yesPayOffDebt =  UIAlertAction(title: "Yes", style: .default, handler: {
@@ -218,5 +221,19 @@ class IndividualDebtViewController: UIViewController, UITextFieldDelegate {
             self.duedate.text = self.newDate
             self.debt?.date = self.newDate!
         }
+    }
+    
+    func configSlider() {
+        slider.minimumValue = Float(Int(self.money.text!)! - 1000)
+        slider.maximumValue = Float(Int(self.money.text!)! + 1000)
+        slider.value = Float(Int(self.money.text!)!)
+        slider.minimumTrackTintColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
+        slider.maximumTrackTintColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
+    }
+
+    @IBAction func sliderValueChange(sender: CustomSlider) {
+        var currentSliderValue = sender.value
+        self.money.text = String(format: "%i",Int(sender.value))
+        self.debt?.money = String(Int(currentSliderValue))
     }
 }

@@ -13,22 +13,38 @@ class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet var welcomeView: UIView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        setUpElements()
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        configWelcomeView()
+    }
+    
+    func configWelcomeView() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.blue.cgColor, UIColor.purple.cgColor]
+        gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.frame = welcomeView.bounds
+        welcomeView.layer.addSublayer(gradient)
+        let label = UILabel(frame: welcomeView.bounds)
+        label.text = "Welcome to DebtFree"
+        label.font = UIFont.boldSystemFont(ofSize: 35)
+        label.textAlignment = .left
+        welcomeView.addSubview(label)
+        welcomeView.mask = label
+    }
+    
+    @IBAction func signUp(_ sender: Any) {
+        self.performSegue(withIdentifier: "signUp", sender: self)
     }
     
     
-    func setUpElements() {
-        Utilities.styleFilledButton(signUpButton)
-        Utilities.styleFilledButton(loginButton)
+    @IBAction func logIn(_ sender: Any) {
+        self.performSegue(withIdentifier: "logIn", sender: self)
     }
     
-
     
 
 

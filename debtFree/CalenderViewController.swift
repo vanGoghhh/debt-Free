@@ -7,10 +7,12 @@
 
 import UIKit
 import FSCalendar
+import PMSuperButton
 
 class CalenderViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource{
 
     @IBOutlet var calender: FSCalendar!
+    @IBOutlet var saveDate: PMSuperButton!
     
     var originalDate : String?
     var editedDate : String?
@@ -19,7 +21,10 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         super.viewDidLoad()
         calender.delegate = self
         calender.dataSource = self
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        self.saveDate.gradientStartColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
+        self.saveDate.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
+        self.calender.backgroundColor = UIColor(red: 65/255, green: 65/255, blue: 75/255, alpha: 1)
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

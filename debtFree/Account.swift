@@ -8,12 +8,16 @@
 
 import Foundation
 
-struct Account {
+struct Account: Equatable {
     var accName: String;
     var accMoney: String;
     
     init(accName: String, accMoney: String) {
         self.accName = accName;
         self.accMoney = accMoney;
+    }
+    
+    static func ==(lhs: Account, rhs: Account) -> Bool {
+        return lhs.accName == rhs.accName && lhs.accMoney == rhs.accMoney
     }
 }

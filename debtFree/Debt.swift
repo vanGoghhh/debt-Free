@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct Debt {
+struct Debt : Equatable {
     var debtorDebteeName: String;
     var money: String;
     var date: String;
@@ -21,4 +21,15 @@ struct Debt {
         self.notes = notes
         self.oweOrOwed = oweOrOwed
     }
+    
+    static func ==(lhs: Debt, rhs: Debt)-> Bool {
+        return lhs.debtorDebteeName == rhs.debtorDebteeName
+                && lhs.money == rhs.money
+                && lhs.date == rhs.date
+                && lhs.notes == rhs.notes
+                && lhs.oweOrOwed == rhs.oweOrOwed
+    }
 }
+
+
+

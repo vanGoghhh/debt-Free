@@ -10,22 +10,31 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 import Firebase
+import CocoaTextField
+import PMSuperButton
 
 class LoginViewController: UIViewController {
     
     var acc: Account?
     var debt: Debt?
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet var loginButton: PMSuperButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet var emailTextField: CocoaTextField!
+    @IBOutlet var passwordTextField: CocoaTextField!
+    @IBOutlet var logoView: UIView!
+    @IBOutlet var forFunImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         setUpElements()
-        // Do any additional setup after loading the view.
+        setUpTextField(textField: emailTextField)
+        setUpTextField(textField: passwordTextField)
+        self.loginButton.gradientEndColor = UIColor.red
+        self.loginButton.gradientStartColor = UIColor.blue
+        configLogoView()
+        self.forFunImage.image = UIImage(named: "creditImage")
     }
     
     func setUpElements() {
@@ -35,6 +44,28 @@ class LoginViewController: UIViewController {
         Utilities.styleFilledButton(loginButton)
     }
     
+    func configLogoView() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.blue.cgColor, UIColor.purple.cgColor]
+        gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.frame = logoView.bounds
+        logoView.layer.addSublayer(gradient)
+        let label = UILabel(frame: logoView.bounds)
+        label.text = "Debt-Free"
+        label.font = UIFont.boldSystemFont(ofSize: 70)
+        label.textAlignment = .left
+        logoView.addSubview(label)
+        logoView.mask = label
+    }
+    
+    func setUpTextField(textField: CocoaTextField) {
+        textField.inactiveHintColor = UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1)
+        textField.activeHintColor = UIColor(red: 94/255, green: 186/255, blue: 187/255, alpha: 1)
+        textField.focusedBackgroundColor = UIColor(red: 236/255, green: 239/255, blue: 239/255, alpha: 1)
+        textField.defaultBackgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        textField.borderColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+    }
     @IBAction func loginTapped(_ sender: Any) {
         
         //Validate text fields
@@ -51,8 +82,6 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             } else {
                 //Get document ID of the user
-                //debtsData.updateFireBase()
-                print(debtsData.debtsOwedTo)
                 let db = Firestore.firestore()
                 let docID = Auth.auth().currentUser?.email
                 let docRef = db.collection("users").document(docID!)

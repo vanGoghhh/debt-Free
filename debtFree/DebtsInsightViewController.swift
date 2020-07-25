@@ -9,25 +9,49 @@
 import UIKit
 import Charts
 
-class DebtsInsightViewController: DebtsViewController {
+class DebtsInsightViewController: UIViewController {
     
-    @IBOutlet var pieChart : PieChartView!
+    
+    @IBOutlet var pieChart: PieChartView!
+    
     
     override func viewDidLoad() {
-        super.viewDidLoad()      
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         setUpPieChart()
         updateChart()
-        //pieChart.reloadInputViews()
+        //self.view.addSubview(pieChart)
     }
     
     func setUpPieChart() {
-        pieChart.drawHoleEnabled = false
-        pieChart.rotationAngle = 0
-        pieChart.rotationEnabled = false
-        pieChart.isUserInteractionEnabled = false
+        pieChart?.drawHoleEnabled = false
+        pieChart?.rotationAngle = 0
+        pieChart?.rotationEnabled = false
+        pieChart?.isUserInteractionEnabled = false
        
     }
-    
+//    func configChart() {
+//        var entry = [PieChartDataEntry]()
+//        var debtOwe = 0
+//
+//        for debt in debtsData.debtsOwe {
+//            debtOwe += Int(debt.money)!
+//        }
+//        var debtOweTo = 0
+//
+//        for debt in debtsData.debtsOwedTo {
+//            debtOweTo += Int(debt.money)!
+//        }
+//        print(debtOwe)
+//        print(debtOweTo)
+//        entry.append(PieChartDataEntry(value: Double(debtOwe)))
+//        entry.append(PieChartDataEntry(value: Double(debtOweTo)))
+//
+//        let dataSet = PieChartDataSet(entries: entry, label: "")
+//        let chartData = PieChartData(dataSet: dataSet)
+//        dataSet.colors = [UIColor.systemRed, UIColor.systemBlue]
+//        pieChart.data = chartData
+//    }
     func updateChart() {
         let moneyIn =  PieChartDataEntry(value: Double(debtsData.recalculateDebtOwe()))
         let moneyOut =  PieChartDataEntry(value: Double(debtsData.recalculateDebtOwedTo()))
@@ -41,20 +65,12 @@ class DebtsInsightViewController: DebtsViewController {
         print(moneyIn.value)
         let chartDataSet = PieChartDataSet(entries: values, label: "")
         let chartData = PieChartData(dataSet: chartDataSet)
-        let colour1 = UIColor.red
+        let colour1 = UIColor.white
         let colour2 = UIColor.blue
         chartDataSet.colors = [colour1, colour2]
-        pieChart.data = chartData
+        pieChart?.data = chartData
+        pieChart?.setNeedsDisplay()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
