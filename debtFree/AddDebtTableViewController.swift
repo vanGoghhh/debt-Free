@@ -58,8 +58,7 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
 
         setupAddTargetIsNotEmpty()
         
-        self.view.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
-        
+
         for view in self.cellView {
             view.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         }
@@ -194,6 +193,60 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         textField.textColor = UIColor.white
     }
     
+    func setuptextfieldwhite(textField: CocoaTextField) {
+        textField.inactiveHintColor = UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1)
+        textField.activeHintColor = UIColor(red: 94/255, green: 186/255, blue: 187/255, alpha: 1)
+        textField.focusedBackgroundColor = UIColor(red: 236/255, green: 239/255, blue: 239/255, alpha: 1)
+        textField.defaultBackgroundColor = UIColor(red: 1/255, green: 1/255, blue: 1/255, alpha: 1)
+        textField.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+        textField.textColor = UIColor.black
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.view.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        if isDarkMode == true {
+            darkMode()
+        } else {
+            lightMode()
+        }
+    }
+    
+    func darkMode() {
+           self.navigationController?.navigationBar.isTranslucent = false
+           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]//user global variable
+           self.navigationController?.navigationBar.barStyle = UIBarStyle.black //user global variable
+           self.navigationController?.navigationBar.tintColor = UIColor.black //user global variable
+           if #available(iOS 13.0, *) {
+               overrideUserInterfaceStyle = .dark
+           } else {
+               // Fallback on earlier versions
+           }
+           self.tabBarController?.tabBar.barTintColor = UIColor.black
+           view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+       }
+       
+       func lightMode() {
+           self.navigationController?.navigationBar.isTranslucent = false
+           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]//user global variable
+           self.navigationController?.navigationBar.barStyle = UIBarStyle.default //user global variable
+           self.navigationController?.navigationBar.tintColor = UIColor.white //user global variable
+           UIApplication.shared.statusBarStyle = .default
+           if #available(iOS 13.0, *) {
+               overrideUserInterfaceStyle = .light
+           } else {
+               // Fallback on earlier versions
+           }
+           self.tabBarController?.tabBar.barTintColor = UIColor.white
+        self.view.backgroundColor = UIColor.white
+        
+        setuptextfieldwhite(textField: money)
+       setuptextfieldwhite(textField: notes)
+        setuptextfieldwhite(textField: debtorDebteeName)
+        setuptextfieldwhite(textField: oweOrOwed)
+        setuptextfieldwhite(textField: dueDate)
+       }
+       
     
 }

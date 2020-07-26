@@ -20,16 +20,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        accountTable?.delegate = self
-        accountTable?.dataSource = self
-        accountTable?.separatorStyle = .none
-        self.accountTable?.separatorStyle = .none
-        self.accountTable?.estimatedRowHeight = 100
-        self.accountTable?.rowHeight =  UITableView.automaticDimension
-        self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
-        self.accountTable?.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
-        self.addAccount.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
-        self.addAccount.gradientStartColor = UIColor.purple
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,7 +64,57 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         self.performSegue(withIdentifier: "addDebt", sender: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        accountTable?.delegate = self
+        accountTable?.dataSource = self
+        accountTable?.separatorStyle = .none
+        self.accountTable?.separatorStyle = .none
+        self.accountTable?.estimatedRowHeight = 100
+        self.accountTable?.rowHeight =  UITableView.automaticDimension
+        self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        self.accountTable?.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        self.addAccount.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
+        self.addAccount.gradientStartColor = UIColor.purple
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        
+        if isDarkMode == true {
+            darkMode()
+        } else {
+            self.accountTable?.backgroundColor = UIColor.white
+            lightMode()
+        }
+    }
     
+    func darkMode() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]//user global variable
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black //user global variable
+        self.navigationController?.navigationBar.tintColor = UIColor.black //user global variable
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            // Fallback on earlier versions
+        }
+        self.tabBarController?.tabBar.barTintColor = UIColor.black
+        view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+    }
+    
+    func lightMode() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]//user global variable
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.default //user global variable
+        self.navigationController?.navigationBar.tintColor = UIColor.white //user global variable
+        
+     
+        UIApplication.shared.statusBarStyle = .default
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        self.tabBarController?.tabBar.barTintColor = UIColor.white
+        view.backgroundColor = UIColor.groupTableViewBackground
+    }
     
 
 }
