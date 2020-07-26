@@ -29,7 +29,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         self.accountTable?.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         self.addAccount.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
-        self.addAccount.gradientStartColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
+        self.addAccount.gradientStartColor = UIColor.purple
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

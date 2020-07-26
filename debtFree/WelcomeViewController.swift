@@ -30,8 +30,8 @@ class WelcomeViewController: UIViewController {
         welcomeView.layer.addSublayer(gradient)
         let label = UILabel(frame: welcomeView.bounds)
         label.text = "Welcome to DebtFree"
-        label.font = UIFont.boldSystemFont(ofSize: 35)
-        label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 41)
+        label.textAlignment = .center
         welcomeView.addSubview(label)
         welcomeView.mask = label
     }

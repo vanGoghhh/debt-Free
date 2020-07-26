@@ -46,6 +46,12 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         setUpTextField(textField: oweOrOwed)
         setUpTextField(textField: dueDate)
         
+        money.attributedPlaceholder = NSAttributedString(string: "$0.00", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        debtorDebteeName.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        oweOrOwed.attributedPlaceholder = NSAttributedString(string: "Owe or Owed", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        dueDate.attributedPlaceholder = NSAttributedString(string: "DueDate", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        notes.attributedPlaceholder = NSAttributedString(string: "Notes", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
         let tapGesture =  UITapGestureRecognizer(target: self, action: #selector(AddDebtTableViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         
@@ -58,10 +64,12 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
             view.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         }
         
-        self.saveButton.gradientStartColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
-        self.saveButton.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
+//        self.saveButton.gradientStartColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
+//        self.saveButton.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
         
-        self.labelView.backgroundColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
+        self.saveButton.backgroundColor = UIColor(red: 76/255, green: 0/255, blue: 153/255, alpha: 1)
+        
+        self.labelView.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         
         //self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "debtBG.png")!)
     }
@@ -181,8 +189,9 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
         textField.inactiveHintColor = UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1)
         textField.activeHintColor = UIColor(red: 94/255, green: 186/255, blue: 187/255, alpha: 1)
         textField.focusedBackgroundColor = UIColor(red: 236/255, green: 239/255, blue: 239/255, alpha: 1)
-        textField.defaultBackgroundColor = UIColor(red: 55/255, green: 55/255, blue: 65/255, alpha: 1)
+        textField.defaultBackgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         textField.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+        textField.textColor = UIColor.white
     }
     
     

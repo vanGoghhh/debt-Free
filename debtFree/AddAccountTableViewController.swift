@@ -33,6 +33,8 @@ class AddAccountTableViewController: UITableViewController {
         let accName = accNameTxtField.text ?? ""
         let accMoney = accMoneyTxtField.text ?? ""
         saveButton.isEnabled = !accName.isEmpty && !accMoney.isEmpty
+        accNameTxtField.attributedPlaceholder = NSAttributedString(string: "Account Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        accMoneyTxtField.attributedPlaceholder = NSAttributedString(string: "Account Money", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     override func viewDidLoad() {
@@ -51,8 +53,9 @@ class AddAccountTableViewController: UITableViewController {
         }
         self.labelView.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         self.view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
-        self.saveButton.gradientStartColor = UIColor(red: 102/255, green: 102/255, blue: 255/255, alpha: 1)
-        self.saveButton.gradientEndColor = UIColor(red: 142/255, green: 14/255, blue: 155/255, alpha: 1)
+//        self.saveButton.gradientStartColor = UIColor(red: 76/255, green: 0/255, blue: 153/255, alpha: 1)
+//        self.saveButton.gradientEndColor = UIColor(red: 76/255, green: 0/255, blue: 153/255, alpha: 1)
+        self.saveButton.backgroundColor =  UIColor(red: 76/255, green: 0/255, blue: 153/255, alpha: 1)
       }
     
     @IBAction func textEditingChanged(_sender: UITextField) {
@@ -75,9 +78,9 @@ class AddAccountTableViewController: UITableViewController {
         textField.inactiveHintColor = UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1)
         textField.activeHintColor = UIColor(red: 94/255, green: 186/255, blue: 187/255, alpha: 1)
         textField.focusedBackgroundColor = UIColor(red: 236/255, green: 239/255, blue: 239/255, alpha: 1)
-        textField.defaultBackgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
+        textField.defaultBackgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         textField.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
-        textField.backgroundColor = UIColor(red: 65/255, green: 65/255, blue: 75/255, alpha: 1)
+        textField.textColor = UIColor.white
     }
 
 }

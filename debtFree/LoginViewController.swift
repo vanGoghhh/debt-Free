@@ -31,8 +31,8 @@ class LoginViewController: UIViewController {
         setUpElements()
         setUpTextField(textField: emailTextField)
         setUpTextField(textField: passwordTextField)
-        self.loginButton.gradientEndColor = UIColor.red
-        self.loginButton.gradientStartColor = UIColor.blue
+        self.loginButton.gradientEndColor = UIColor(red: 76/255, green: 0/255, blue: 153/255, alpha: 1)
+        self.loginButton.gradientStartColor = UIColor(red: 76/255, green: 0/255, blue: 153/255, alpha: 1)
         configLogoView()
         self.forFunImage.image = UIImage(named: "creditImage")
     }
