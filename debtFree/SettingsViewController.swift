@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController {
         self.navigationController?.navigationBar.barStyle = UIBarStyle.black //user global variable
         self.navigationController?.navigationBar.tintColor = UIColor.black //user global variable
         overrideUserInterfaceStyle = .dark
-        self.tabBarController?.tabBar.barTintColor = UIColor.black
+        self.tabBarController?.tabBar.barTintColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
     }
     

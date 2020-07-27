@@ -95,7 +95,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             // Fallback on earlier versions
         }
-        self.tabBarController?.tabBar.barTintColor = UIColor.black
+         self.tabBarController?.tabBar.barTintColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
     }
     

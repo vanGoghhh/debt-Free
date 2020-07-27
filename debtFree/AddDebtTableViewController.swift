@@ -187,7 +187,7 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
     func setUpTextField(textField: CocoaTextField) {
         textField.inactiveHintColor = UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1)
         textField.activeHintColor = UIColor(red: 94/255, green: 186/255, blue: 187/255, alpha: 1)
-        textField.focusedBackgroundColor = UIColor(red: 236/255, green: 239/255, blue: 239/255, alpha: 1)
+        textField.focusedBackgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         textField.defaultBackgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
         textField.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
         textField.textColor = UIColor.white
@@ -223,7 +223,7 @@ class AddDebtTableViewController: UITableViewController, UIPickerViewDelegate, U
            } else {
                // Fallback on earlier versions
            }
-           self.tabBarController?.tabBar.barTintColor = UIColor.black
+            self.tabBarController?.tabBar.barTintColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
            view.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
        }
        

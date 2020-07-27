@@ -4,7 +4,6 @@
 //
 //  Created by Nigel Ng on 15/6/20.
 //  Copyright © 2020 Nigel Ng. All rights reserved.
-// oof
 
 import UIKit
 import Firebase
@@ -76,10 +75,8 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         AddDebtTableViewController,
         let debt = sourceViewController.debt else { return}
         if debt.oweOrOwed == "Owe" {
-            iOwe.append(debt)
-            //debtsData.addDebtOwe(debt: debt)
-            //print(debtsData.debtsOwedTo)
-            //notification for oweing others
+            masterArray.append(debt)
+            self.debtTableView?.reloadData()
             let content = UNMutableNotificationContent()
             content.title = "Hey its time to pay that debt!"
             content.body = "You owe \(debt.debtorDebteeName) a total of $\(debt.money)"
@@ -93,10 +90,11 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
             UNUserNotificationCenter.current().add(request) { (error) in print("error in notifications") }
             
             //reload view of debt table
-            debtTableView?.reloadData()
+        
 
         } else {
-            peopleOweMe.append(debt)
+            masterArray.append(debt)
+            self.debtTableView?.reloadData()
             //debtsData.addDebtOwedTo(debt: debt)
             //notification for oweing others
             //print(debtsData.debtsOwe)
@@ -111,8 +109,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
             let uuidString = UUID().uuidString
             let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request) { (error) in print("error in notifications") }
-            
-            debtTableView?.reloadData()
+         
         }
         //update total for insights section perhaps
         updateTotal()
@@ -135,7 +132,7 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         for debt in debtOwedTo {
             moneyOwed += Int(debt.money)!
         }
-        totalMoneyLabel?.text = "$" + String(oweMoney - moneyOwed)
+        totalMoneyLabel?.text = "$" + String(moneyOwed - oweMoney)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -163,13 +160,13 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         if (segue.identifier == "editingUnwind") {
             if (self.editedDebt?.oweOrOwed == "Owe") {
                 debtsData.debtsOwe[editedDebtIndex!] = editedDebt!
-                iOwe[editedDebtIndex!] = editedDebt!
+                masterArray[editedDebtIndex!] = editedDebt!
                 updateTotal()
                 debtsData.updateFireBase()
                 self.debtTableView.reloadData()
             } else {
                 debtsData.debtsOwedTo[editedDebtIndex!] = editedDebt!
-                peopleOweMe[editedDebtIndex!] = editedDebt!
+                masterArray[editedDebtIndex!] = editedDebt!
                 debtsData.updateFireBase()
                 updateTotal()
                 self.debtTableView.reloadData()
@@ -294,4 +291,6 @@ class DebtsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         self.debtTableView.reloadData()
     }
+    
+     
 }

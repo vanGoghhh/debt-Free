@@ -37,7 +37,7 @@ class DebtTableViewCell: UITableViewCell {
         self.cellView.layer.cornerRadius = 20
         self.amountOwed.textColor = UIColor(red: 0/255, green: 153/255, blue: 76/255, alpha: 1)
         self.debtorDebteeName.textColor = UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
-        self.dueDate.textColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+        self.dueDate.textColor = UIColor(red: 130/255, green: 130/255, blue: 140/255, alpha: 1)
         self.cellView.layer.borderWidth =  7
         self.cellView.layer.borderColor =  UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1).cgColor
         self.contentView.backgroundColor = UIColor(red: 45/255, green: 45/255, blue: 55/255, alpha: 1)
